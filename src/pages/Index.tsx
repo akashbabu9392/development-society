@@ -41,6 +41,7 @@ const Index = () => {
 
   const events = [
     {
+      id: '1',
       title: "Annual Health Camp 2024",
       date: "March 15, 2024",
       location: "Santacrujvula Village",
@@ -50,6 +51,7 @@ const Index = () => {
       participants: "200+ beneficiaries"
     },
     {
+      id: '2',
       title: "Women Empowerment Workshop",
       date: "February 28, 2024",
       location: "Community Center",
@@ -59,6 +61,7 @@ const Index = () => {
       participants: "45 women"
     },
     {
+      id: '3',
       title: "Educational Scholarship Distribution",
       date: "January 20, 2024",
       location: "DSP Main Office",
@@ -131,41 +134,51 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-            <ServiceCard
-              title="Educational And Vocational Skill Training Projects."
-              icon={GraduationCap}
-              gradientFrom="from-teal-400"
-              gradientTo="to-emerald-600"
-              backgroundImage="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop"
-            />
-            <ServiceCard
-              title="Health And Projects For The Differently Abled."
-              icon={Heart}
-              gradientFrom="from-cyan-400"
-              gradientTo="to-blue-600"
-              backgroundImage="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop"
-            />
-            <ServiceCard
-              title="Women Development And Elderly Care Projects."
-              icon={Users}
-              gradientFrom="from-pink-400"
-              gradientTo="to-rose-600"
-              backgroundImage="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=300&fit=crop"
-            />
-            <ServiceCard
-              title="Projects For The Victims."
-              icon={Shield}
-              gradientFrom="from-yellow-400"
-              gradientTo="to-orange-600"
-              backgroundImage="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=400&h=300&fit=crop"
-            />
-            <ServiceCard
-              title="Emergency Relief Projects."
-              icon={Zap}
-              gradientFrom="from-sky-400"
-              gradientTo="to-blue-700"
-              backgroundImage="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=400&h=300&fit=crop"
-            />
+            <a href="/service/education" className="block">
+              <ServiceCard
+                title="Educational And Vocational Skill Training Projects."
+                icon={GraduationCap}
+                gradientFrom="from-teal-400"
+                gradientTo="to-emerald-600"
+                backgroundImage="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop"
+              />
+            </a>
+            <a href="/service/health" className="block">
+              <ServiceCard
+                title="Health And Projects For The Differently Abled."
+                icon={Heart}
+                gradientFrom="from-cyan-400"
+                gradientTo="to-blue-600"
+                backgroundImage="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop"
+              />
+            </a>
+            <a href="/service/women" className="block">
+              <ServiceCard
+                title="Women Development And Elderly Care Projects."
+                icon={Users}
+                gradientFrom="from-pink-400"
+                gradientTo="to-rose-600"
+                backgroundImage="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=300&fit=crop"
+              />
+            </a>
+            <a href="/service/victims" className="block">
+              <ServiceCard
+                title="Projects For The Victims."
+                icon={Shield}
+                gradientFrom="from-yellow-400"
+                gradientTo="to-orange-600"
+                backgroundImage="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=400&h=300&fit=crop"
+              />
+            </a>
+            <a href="/service/emergency" className="block">
+              <ServiceCard
+                title="Emergency Relief Projects."
+                icon={Zap}
+                gradientFrom="from-sky-400"
+                gradientTo="to-blue-700"
+                backgroundImage="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=400&h=300&fit=crop"
+              />
+            </a>
           </div>
         </div>
       </section>
@@ -364,14 +377,16 @@ const Index = () => {
                       {event.participants}
                     </div>
                     
-                    <Button 
-                      variant="ghost" 
-                      size="sm" 
-                      className="text-[#f15a24] hover:text-orange-600 hover:bg-orange-50 p-2 group-hover:translate-x-1 transition-all duration-300"
-                    >
-                      Read More
-                      <ArrowRight size={16} className="ml-1" />
-                    </Button>
+                    <a href={`/event/${event.id}`}>
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="text-[#f15a24] hover:text-orange-600 hover:bg-orange-50 p-2 group-hover:translate-x-1 transition-all duration-300"
+                      >
+                        Read More
+                        <ArrowRight size={16} className="ml-1" />
+                      </Button>
+                    </a>
                   </div>
                 </CardContent>
                 
