@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import Layout from '@/components/Layout';
 import ServiceCard from '@/components/ServiceCard';
@@ -123,27 +122,37 @@ const Index = () => {
             <ServiceCard
               title="Educational And Vocational Skill Training Projects."
               icon={GraduationCap}
-              bgColor="bg-emerald-500"
+              gradientFrom="from-teal-400"
+              gradientTo="to-emerald-600"
+              backgroundImage="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop"
             />
             <ServiceCard
               title="Health And Projects For The Differently Abled."
               icon={Heart}
-              bgColor="bg-cyan-500"
+              gradientFrom="from-cyan-400"
+              gradientTo="to-blue-600"
+              backgroundImage="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop"
             />
             <ServiceCard
               title="Women Development And Elderly Care Projects."
               icon={Users}
-              bgColor="bg-pink-400"
+              gradientFrom="from-pink-400"
+              gradientTo="to-rose-600"
+              backgroundImage="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=300&fit=crop"
             />
             <ServiceCard
               title="Projects For The Victims."
               icon={Shield}
-              bgColor="bg-orange-400"
+              gradientFrom="from-yellow-400"
+              gradientTo="to-orange-600"
+              backgroundImage="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=400&h=300&fit=crop"
             />
             <ServiceCard
               title="Emergency Relief Projects."
               icon={Zap}
-              bgColor="bg-blue-500"
+              gradientFrom="from-sky-400"
+              gradientTo="to-blue-700"
+              backgroundImage="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=400&h=300&fit=crop"
             />
           </div>
         </div>
