@@ -9,7 +9,13 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
-import EventDetail from "./pages/EventDetail";
+import Events from "./pages/Events";
+import Event1 from "./pages/events/Event1";
+import Event2 from "./pages/events/Event2";
+import Event3 from "./pages/events/Event3";
+import Event4 from "./pages/events/Event4";
+import Event5 from "./pages/events/Event5";
+import Event6 from "./pages/events/Event6";
 import ServiceDetail from "./pages/ServiceDetail";
 import NotFound from "./pages/NotFound";
 
@@ -28,7 +34,13 @@ const App = () => (
           <Route path="/service/:id" element={<ServiceDetail />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/event/:id" element={<EventDetail />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/event/1" element={<Event1 />} />
+          <Route path="/event/2" element={<Event2 />} />
+          <Route path="/event/3" element={<Event3 />} />
+          <Route path="/event/4" element={<Event4 />} />
+          <Route path="/event/5" element={<Event5 />} />
+          <Route path="/event/6" element={<Event6 />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

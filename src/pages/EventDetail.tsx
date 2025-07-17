@@ -1,91 +1,173 @@
-
 import { useParams, useNavigate } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Calendar, MapPin, Users, ArrowLeft, Clock, Target, Heart } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+interface Event {
+  id: string;
+  title: string;
+  date: string;
+  location: string;
+  description: string;
+  image: string;
+  category: string;
+  participants: string;
+  fullDescription: string;
+  impact: string[];
+  gallery: string[];
+}
+
+const events: Event[] = [
+  {
+    id: '1',
+    title: "President Speaks…",
+    date: "January 30, 2023",
+    location: "Development Society for Poor",
+    description: "During the Annual Celebrations at Christmas, the President Mrs. K. Thomasamma gives away her message to the volunteers, Children, Women, and Elderly people.",
+    image: "/images/event1.jpg",
+    category: "Events",
+    participants: "",
+    fullDescription: "During the Annual Celebrations at Christmas, the President Mrs. K. Thomasamma gives away her message to the volunteers, Children, Women, and Elderly people. This event brings together the community to celebrate achievements and share inspiring words for the future.",
+    impact: [
+      "Community gathering and celebration",
+      "Inspiring leadership message",
+      "Recognition of community efforts"
+    ],
+    gallery: [
+      "/images/event1.jpg",
+      "/images/event1-1.jpg",
+      "/images/event1-2.jpg"
+    ]
+  },
+  {
+    id: '2',
+    title: "Emergency Flood Relief Activity – 2019",
+    date: "January 30, 2023",
+    location: "Development Society for Poor",
+    description: "Emergency Flood Relief Activity – 2019",
+    image: "/images/event2.jpg",
+    category: "Events",
+    participants: "",
+    fullDescription: "Our emergency response team provided immediate relief to flood-affected families in the region. We distributed food supplies, clean water, and essential medical aid to those in need.",
+    impact: [
+      "100+ families received emergency aid",
+      "Distribution of essential supplies",
+      "Medical assistance provided"
+    ],
+    gallery: [
+      "/images/event2.jpg",
+      "/images/event2-1.jpg",
+      "/images/event2-2.jpg"
+    ]
+  },
+  {
+    id: '3',
+    title: "Educational Awareness on COVID 19",
+    date: "January 30, 2023",
+    location: "Development Society for Poor",
+    description: "Educational Awareness on COVID 19",
+    image: "/images/event3.jpg",
+    category: "Events",
+    participants: "",
+    fullDescription: "We organized a comprehensive awareness campaign to educate the community about COVID-19 prevention measures and safety protocols.",
+    impact: [
+      "Community health education",
+      "Distribution of safety kits",
+      "Awareness program reach"
+    ],
+    gallery: [
+      "/images/event3.jpg",
+      "/images/event3-1.jpg",
+      "/images/event3-2.jpg"
+    ]
+  },
+  {
+    id: '4',
+    title: "Annual Health Camp 2024",
+    date: "March 15, 2024",
+    location: "Development Society for Poor",
+    description: "Free medical checkup and medicines distribution for elderly and children. Over 200 beneficiaries received quality healthcare services from qualified doctors.",
+    image: "/images/event4.jpg",
+    category: "Health",
+    participants: "200+ beneficiaries",
+    fullDescription: "Our Annual Health Camp 2024 was a tremendous success, bringing essential healthcare services directly to the doorsteps of those who need it most. The camp was organized in collaboration with qualified medical professionals and local healthcare workers. We provided comprehensive health screenings, distributed free medicines, and offered health education sessions. The camp particularly focused on preventive care for children and elderly residents, addressing common health issues prevalent in rural areas. Medical specialists conducted eye check-ups, blood pressure monitoring, diabetes screening, and general health consultations. We also organized awareness sessions on hygiene, nutrition, and disease prevention.",
+    impact: [
+      "200+ individuals received free health checkups",
+      "150+ medicine packages distributed",
+      "50+ children vaccinated",
+      "25+ elderly patients referred for specialized care",
+      "Health awareness sessions conducted for 300+ community members"
+    ],
+    gallery: [
+      "/images/event4.jpg",
+      "/images/event4-1.jpg",
+      "/images/event4-2.jpg"
+    ]
+  },
+  {
+    id: '5',
+    title: "Women Empowerment Workshop",
+    date: "February 28, 2024",
+    location: "Development Society for Poor",
+    description: "Skills training workshop for women in tailoring, handicrafts, and small business management. Certificates awarded to 45 participants.",
+    image: "/images/event5.jpg",
+    category: "Women Development",
+    participants: "45 women",
+    fullDescription: "The Women Empowerment Workshop was designed to provide practical skills and knowledge to women from disadvantaged backgrounds. The comprehensive program included hands-on training in tailoring, handicraft making, and essential business management skills. Participants learned about financial literacy, marketing basics, and how to start and manage small businesses. The workshop aimed to create sustainable livelihood opportunities and promote economic independence among women in the community. Expert trainers and successful women entrepreneurs shared their experiences and provided mentorship to the participants.",
+    impact: [
+      "45 women completed the comprehensive training program",
+      "30+ women started their own small businesses",
+      "15+ self-help groups formed",
+      "Skills training in 5 different handicraft areas",
+      "Microfinance linkages established for 25 participants"
+    ],
+    gallery: [
+      "/images/event5.jpg",
+      "/images/event5-1.jpg",
+      "/images/event5-2.jpg"
+    ]
+  },
+  {
+    id: '6',
+    title: "Educational Scholarship Distribution",
+    date: "January 20, 2024",
+    location: "Development Society for Poor",
+    description: "Annual scholarship ceremony for meritorious students from underprivileged families. Supporting education dreams of 30 bright students.",
+    image: "/images/event6.jpg",
+    category: "Education",
+    participants: "30 students",
+    fullDescription: "The Educational Scholarship Distribution ceremony was a milestone event celebrating academic excellence and supporting the educational aspirations of deserving students from economically disadvantaged families. The scholarship program covers tuition fees, books, uniforms, and other educational expenses. Our selection process is based on academic merit, financial need, and the student's commitment to their studies. The ceremony included motivational speeches, cultural performances by the students, and interaction sessions with successful alumni who were previous scholarship recipients. We believe that education is the most powerful tool for breaking the cycle of poverty.",
+    impact: [
+      "30 deserving students received annual scholarships",
+      "100% scholarship renewal rate",
+      "Improved academic performance",
+      "Mentorship program launched for scholarship recipients"
+    ],
+    gallery: [
+      "/images/event6.jpg",
+      "/images/event6-1.jpg",
+      "/images/event6-2.jpg"
+    ]
+  }
+];
 
 const EventDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const events = {
-    '1': {
-      title: "Annual Health Camp 2024",
-      date: "March 15, 2024",
-      location: "Santacrujvula Village",
-      description: "Free medical checkup and medicines distribution for elderly and children. Over 200 beneficiaries received quality healthcare services from qualified doctors.",
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=1200&h=600&fit=crop",
-      category: "Health",
-      participants: "200+ beneficiaries",
-      fullDescription: "Our Annual Health Camp 2024 was a tremendous success, bringing essential healthcare services directly to the doorsteps of those who need it most. The camp was organized in collaboration with qualified medical professionals and local healthcare workers. We provided comprehensive health screenings, distributed free medicines, and offered health education sessions. The camp particularly focused on preventive care for children and elderly residents, addressing common health issues prevalent in rural areas. Medical specialists conducted eye check-ups, blood pressure monitoring, diabetes screening, and general health consultations. We also organized awareness sessions on hygiene, nutrition, and disease prevention.",
-      impact: [
-        "200+ individuals received free health checkups",
-        "150+ medicine packages distributed",
-        "50+ children vaccinated",
-        "25+ elderly patients referred for specialized care",
-        "Health awareness sessions conducted for 300+ community members"
-      ],
-      gallery: [
-        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=400&h=300&fit=crop"
-      ]
-    },
-    '2': {
-      title: "Women Empowerment Workshop",
-      date: "February 28, 2024",
-      location: "Community Center",
-      description: "Skills training workshop for women in tailoring, handicrafts, and small business management. Certificates awarded to 45 participants.",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1200&h=600&fit=crop",
-      category: "Women Development",
-      participants: "45 women",
-      fullDescription: "The Women Empowerment Workshop was designed to provide practical skills and knowledge to women from disadvantaged backgrounds. The comprehensive program included hands-on training in tailoring, handicraft making, and essential business management skills. Participants learned about financial literacy, marketing basics, and how to start and manage small businesses. The workshop aimed to create sustainable livelihood opportunities and promote economic independence among women in the community. Expert trainers and successful women entrepreneurs shared their experiences and provided mentorship to the participants.",
-      impact: [
-        "45 women completed the comprehensive training program",
-        "30+ women started their own small businesses",
-        "15+ self-help groups formed",
-        "Skills training in 5 different handicraft areas",
-        "Microfinance linkages established for 25 participants"
-      ],
-      gallery: [
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1594736797933-d0f06ba56245?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&h=300&fit=crop"
-      ]
-    },
-    '3': {
-      title: "Educational Scholarship Distribution",
-      date: "January 20, 2024",
-      location: "DSP Main Office",
-      description: "Annual scholarship ceremony for meritorious students from underprivileged families. Supporting education dreams of 30 bright students.",
-      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&h=600&fit=crop",
-      category: "Education",
-      participants: "30 students",
-      fullDescription: "The Educational Scholarship Distribution ceremony was a milestone event celebrating academic excellence and supporting the educational aspirations of deserving students from economically disadvantaged families. The scholarship program covers tuition fees, books, uniforms, and other educational expenses. Our selection process is based on academic merit, financial need, and the student's commitment to their studies. The ceremony included motivational speeches, cultural performances by the students, and interaction sessions with successful alumni who were previous scholarship recipients. We believe that education is the most powerful tool for breaking the cycle of poverty.",
-      impact: [
-        "30 deserving students received annual scholarships",
-        "₹5,00,000 total scholarship amount distributed",
-        "100% of previous scholarship students showed improved academic performance",
-        "15+ students from last year's batch secured admissions in prestigious colleges",
-        "Mentorship program launched for scholarship recipients"
-      ],
-      gallery: [
-        "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop"
-      ]
-    }
-  };
-
-  const event = events[id as keyof typeof events];
+  const event = events.find(e => e.id === id);
 
   if (!event) {
     return (
       <Layout>
         <div className="container mx-auto px-4 py-16 text-center">
           <h1 className="text-2xl font-bold text-gray-800 mb-4">Event Not Found</h1>
-          <Button onClick={() => navigate('/')}>Back to Home</Button>
+          <Link to="/events" className="inline-flex items-center text-gray-600 hover:text-gray-800">
+            <ArrowLeft className="mr-2" />
+            Back to Events
+          </Link>
         </div>
       </Layout>
     );
@@ -95,17 +177,28 @@ const EventDetail = () => {
     <Layout>
       {/* Hero Section */}
       <section className="relative h-[60vh] overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${event.image})` }}
-        >
-          <div className="absolute inset-0 bg-black/60"></div>
+        <div className="relative h-full">
+          <Card className="group relative overflow-hidden bg-white border-0 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3">
+            {/* Image Container */}
+            <div className="relative h-72 p-4">
+              <img 
+                src={event.image}
+                alt={event.title}
+                className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
+              />
+              
+              {/* Category Badge */}
+              <div className="absolute top-4 left-4 px-3 py-1 bg-gradient-to-r from-[#f15a24] to-orange-600 text-white text-xs font-semibold rounded-full shadow-lg">
+                {event.category}
+              </div>
+              
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+          </Card>
         </div>
         <div className="relative z-10 h-full flex items-center justify-center text-center text-white px-4">
           <div className="max-w-4xl">
-            <div className="inline-flex items-center px-4 py-2 bg-[#f15a24] rounded-full text-sm font-medium mb-4">
-              {event.category}
-            </div>
             <h1 className="text-3xl md:text-5xl font-bold mb-4">{event.title}</h1>
             <div className="flex flex-wrap justify-center gap-6 text-lg">
               <div className="flex items-center">
@@ -114,7 +207,7 @@ const EventDetail = () => {
               </div>
               <div className="flex items-center">
                 <MapPin className="mr-2" size={20} />
-                {event.location}
+                Development Society for Poor
               </div>
               <div className="flex items-center">
                 <Users className="mr-2" size={20} />
@@ -128,14 +221,13 @@ const EventDetail = () => {
       {/* Content Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <Button 
-            variant="ghost" 
-            onClick={() => navigate('/')}
-            className="mb-8 text-[#f15a24] hover:bg-orange-50"
+          <Link 
+            to="/events"
+            className="inline-flex items-center text-gray-600 hover:text-gray-800 mb-8"
           >
-            <ArrowLeft className="mr-2" size={20} />
-            Back to Home
-          </Button>
+            <ArrowLeft className="mr-2" />
+            Back to Events
+          </Link>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Main Content */}
@@ -178,7 +270,7 @@ const EventDetail = () => {
             </div>
 
             {/* Sidebar */}
-            <div className="space-y-6">
+            <div>
               <Card className="border-0 shadow-lg">
                 <CardContent className="p-6">
                   <h3 className="text-lg font-bold text-gray-800 mb-4">Event Details</h3>

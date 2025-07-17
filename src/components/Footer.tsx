@@ -16,7 +16,7 @@ const Footer = () => {
             <Button className="bg-gray-800 hover:bg-gray-900 text-white px-6 py-2">
               Donate Now
             </Button>
-            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-[#f15a24] px-6 py-2">
+            <Button className="bg-white text-[#f15a24] hover:bg-gray-100 px-6 py-2">
               Contact Us
             </Button>
           </div>

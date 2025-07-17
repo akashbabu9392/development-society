@@ -13,7 +13,7 @@ const ServiceDetail = () => {
     'education': {
       title: "Educational And Vocational Skill Training Projects",
       description: "Empowering through knowledge and skills development",
-      image: "https://images.unsplash.com/photo-1544717684-8b6b75e9b59f?w=1200&h=600&fit=crop",
+      image: "/images/educational.jpg",
       overview: "Our educational initiatives focus on providing quality education and vocational training to underprivileged children and youth. We believe education is the cornerstone of development and the most effective way to break the cycle of poverty.",
       objectives: [
         "Provide formal and non-formal education opportunities",
@@ -44,7 +44,7 @@ const ServiceDetail = () => {
     'health': {
       title: "Health And Projects For The Differently Abled",
       description: "Ensuring healthcare access and dignity for all",
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&h=600&fit=crop",
+      image: "/images/health.jpg",
       overview: "Our health initiatives aim to provide comprehensive healthcare services to underserved communities, with special focus on differently-abled individuals who often face additional barriers to accessing healthcare.",
       objectives: [
         "Provide accessible healthcare services",
@@ -75,7 +75,7 @@ const ServiceDetail = () => {
     'women': {
       title: "Women Development And Elderly Care Projects",
       description: "Empowering women and caring for our elders",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1200&h=600&fit=crop",
+      image: "/images/women-development.jpg",
       overview: "We focus on women's empowerment through skill development, income generation, and leadership training, while ensuring our elderly community members receive the care and respect they deserve.",
       objectives: [
         "Form and strengthen Self Help Groups (SHGs)",
@@ -106,7 +106,7 @@ const ServiceDetail = () => {
     'victims': {
       title: "Projects For The Victims",
       description: "Supporting those who need us most",
-      image: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=1200&h=600&fit=crop",
+      image: "/images/projects.jpg",
       overview: "We provide comprehensive support to various categories of victims including orphans, widows, differently-abled individuals, elderly, and those affected by diseases, ensuring they receive the care and support they deserve.",
       objectives: [
         "Support orphan and semi-orphan children",
@@ -137,7 +137,7 @@ const ServiceDetail = () => {
     'emergency': {
       title: "Emergency Relief Projects",
       description: "Rapid response when disasters strike",
-      image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1200&h=600&fit=crop",
+      image: "/images/emergency.jpeg",
       overview: "Our emergency relief operations provide immediate assistance during natural disasters, floods, cyclones, and other emergency situations, ensuring affected communities receive timely support and resources for recovery.",
       objectives: [
         "Provide immediate relief during natural disasters",
@@ -188,12 +188,12 @@ const ServiceDetail = () => {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${service.image})` }}
         >
-          <div className="absolute inset-0 bg-black/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-transparent"></div>
         </div>
         <div className="relative z-10 h-full flex items-center justify-center text-center text-white px-4">
           <div className="max-w-4xl">
-            <h1 className="text-3xl md:text-5xl font-bold mb-4">{service.title}</h1>
-            <p className="text-xl text-gray-200">{service.description}</p>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">{service.title}</h1>
+            <p className="text-xl md:text-2xl text-gray-100 font-medium">{service.description}</p>
           </div>
         </div>
       </section>

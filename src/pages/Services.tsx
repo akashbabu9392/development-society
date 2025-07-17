@@ -40,7 +40,7 @@ const Services = () => {
               </div>
               <div className="lg:w-1/3">
                 <img 
-                  src="https://images.unsplash.com/photo-1544717684-8b6b75e9b59f?w=400&h=300&fit=crop"
+                  src="/images/educational.jpg"
                   alt="Educational Projects"
                   className="w-full h-64 object-cover rounded-lg"
                 />
@@ -58,7 +58,7 @@ const Services = () => {
               </div>
               <div className="lg:w-1/3">
                 <img 
-                  src="/lovable-uploads/7597c083-d11a-430d-b6c3-95ae3e10456e.png"
+                  src="/images/health.jpg"
                   alt="Health Projects"
                   className="w-full h-64 object-cover rounded-lg"
                 />
@@ -76,9 +76,11 @@ const Services = () => {
                 </p>
               </div>
               <div className="lg:w-1/3">
-                <div className="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center">
-                  <span className="text-gray-500">Image placeholder</span>
-                </div>
+                <img 
+                  src="/images/women-development.jpg"
+                  alt="Women Development Projects"
+                  className="w-full h-64 object-cover rounded-lg"
+                />
               </div>
             </div>
 
@@ -136,9 +138,11 @@ const Services = () => {
                 </p>
               </div>
               <div className="lg:w-1/3">
-                <div className="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center">
-                  <span className="text-gray-500">Image placeholder</span>
-                </div>
+                <img 
+                  src="/images/emergency.jpeg"
+                  alt="Women Development Projects"
+                  className="w-full h-64 object-cover rounded-lg"
+                />
               </div>
             </div>
           </div>

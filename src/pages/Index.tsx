@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Layout from '@/components/Layout';
 import ServiceCard from '@/components/ServiceCard';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { 
@@ -27,48 +28,111 @@ const Index = () => {
     {
       title: "EDUCATION OF THE CHILDREN",
       subtitle: "Development Society for Poor",
-      image: "https://images.unsplash.com/photo-1544717684-8b6b75e9b59f?w=1200&h=600&fit=crop"
+      image: "/images/bg1.jpg"
+    },
+    {
+      title: "MEDICAL TREATMENT OF THE CHILDREN",
+      subtitle: "Development Society for Poor",
+      image: "/images/bg2.jpg"
     }
   ];
 
   const volunteers = [
-    { name: "Mrs. G. Thomasamma", role: "Santacrujvula Volunteer" },
-    { name: "Mrs. S. Thomasamma", role: "Santacrujvula Volunteer Strut President" },
-    { name: "Mrs. Laxmi", role: "Santacrujvula Volunteer and Works at the home for the Aged" },
-    { name: "Mrs. Ramana", role: "Ramachajvula Volunteer who works at Home for the Aged" },
-    { name: "Mrs. K. Thomasamma", role: "Gputur President" }
+    { 
+      name: "Mrs. Pulla Mary Vijaya Laxmi", 
+      role: "Rentachintala Volunteer",
+      image: "/images/vijayalaxmi.jpg"
+    },
+    { 
+      name: "Mrs. G. Thomasamma", 
+      role: "Rentachintala Volunteer",
+      image: "/images/thomasamma.jpg"
+    },
+    { 
+      name: "Mrs. S. Thomasamma", 
+      role: "Rentachintala Volunteer Group President",
+      image: "/images/s-thomasamma.jpg"
+    },
+    { 
+      name: "Mrs. Laxmi", 
+      role: "Rentachintala Volunteer and Works at the Home for the Aged",
+      image: "/images/laxmi.jpg"
+    },
+    { 
+      name: "Mrs. Ramana", 
+      role: "Rentachintala Volunteer who works at Home for the Aged",
+      image: "/images/ramana.jpg"
+    },
+    { 
+      name: "Mrs. K. Thomasamma", 
+      role: "Guntur President",
+      image: "/images/k-thomasamma.jpg"
+    }
   ];
 
   const events = [
     {
       id: '1',
+      title: "President Speaks…",
+      date: "January 30, 2023",
+      location: "Development Society for Poor",
+      description: "During the Annual Celebrations at Christmas, the President Mrs. K. Thomasamma gives away her message to the volunteers, Children, Women, and Elderly people.",
+      image: "/images/event1.jpg?crop=faces&width=800&height=600",
+      category: "Events",
+      participants: ""
+    },
+    {
+      id: '2',
+      title: "Emergency Flood Relief Activity – 2019",
+      date: "January 30, 2023",
+      location: "Development Society for Poor",
+      description: "Emergency Flood Relief Activity – 2019",
+      image: "/images/event2.jpg",
+      category: "Events",
+      participants: ""
+    },
+    {
+      id: '3',
+      title: "Educational Awareness on COVID 19",
+      date: "January 30, 2023",
+      location: "Development Society for Poor",
+      description: "Educational Awareness on COVID 19",
+      image: "/images/event3.jpg",
+      category: "Events",
+      participants: ""
+    },
+    {
+      id: '4',
       title: "Annual Health Camp 2024",
       date: "March 15, 2024",
       location: "Santacrujvula Village",
       description: "Free medical checkup and medicines distribution for elderly and children. Over 200 beneficiaries received quality healthcare services from qualified doctors.",
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop",
+      image: "/images/event4.jpg",
       category: "Health",
-      participants: "200+ beneficiaries"
+      participants: "200+ beneficiaries",
+      showOnHomepage: false
     },
     {
-      id: '2',
+      id: '5',
       title: "Women Empowerment Workshop",
       date: "February 28, 2024",
       location: "Community Center",
       description: "Skills training workshop for women in tailoring, handicrafts, and small business management. Certificates awarded to 45 participants.",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=300&fit=crop",
+      image: "/images/event5.jpg",
       category: "Women Development",
-      participants: "45 women"
+      participants: "45 women",
+      showOnHomepage: false
     },
     {
-      id: '3',
+      id: '6',
       title: "Educational Scholarship Distribution",
       date: "January 20, 2024",
       location: "DSP Main Office",
       description: "Annual scholarship ceremony for meritorious students from underprivileged families. Supporting education dreams of 30 bright students.",
-      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop",
+      image: "/images/event6.jpg",
       category: "Education",
-      participants: "30 students"
+      participants: "30 students",
+      showOnHomepage: false
     }
   ];
 
@@ -90,19 +154,34 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative h-[60vh] md:h-[70vh] overflow-hidden">
+      <section className="relative h-[70vh] md:h-[80vh] overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-gray-800"
+          className="absolute inset-0 bg-cover bg-center bg-gray-800 transition-all duration-1000 ease-in-out"
           style={{ backgroundImage: `url(${heroSlides[currentSlide].image})` }}
         >
           <div className="absolute inset-0 bg-black/50"></div>
         </div>
-        <div className="relative z-10 h-full flex items-center justify-center text-center text-white px-4">
-          <div>
-            <p className="text-[#f15a24] text-lg md:text-xl mb-2">{heroSlides[currentSlide].subtitle}</p>
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-wide">
-              {heroSlides[currentSlide].title}
-            </h1>
+        
+        {/* Navigation Arrows */}
+        <button 
+          onClick={() => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft size={24} />
+        </button>
+        <button 
+          onClick={() => setCurrentSlide((prev) => (prev + 1) % heroSlides.length)}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300"
+          aria-label="Next slide"
+        >
+          <ChevronRight size={24} />
+        </button>
+        
+        <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
+          <div className="max-w-4xl mx-auto transform transition-all duration-700 ease-in-out">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 animate-fadeIn text-[#f15a24]">{heroSlides[currentSlide].title}</h1>
+            <p className="text-xl md:text-2xl mb-8 animate-fadeIn text-white">{heroSlides[currentSlide].subtitle}</p>
           </div>
         </div>
         
@@ -140,7 +219,7 @@ const Index = () => {
                 icon={GraduationCap}
                 gradientFrom="from-teal-400"
                 gradientTo="to-emerald-600"
-                backgroundImage="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop"
+                backgroundImage="/images/educational.jpg"
               />
             </a>
             <a href="/service/health" className="block">
@@ -149,7 +228,7 @@ const Index = () => {
                 icon={Heart}
                 gradientFrom="from-cyan-400"
                 gradientTo="to-blue-600"
-                backgroundImage="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop"
+                backgroundImage="/images/health.jpg"
               />
             </a>
             <a href="/service/women" className="block">
@@ -158,7 +237,7 @@ const Index = () => {
                 icon={Users}
                 gradientFrom="from-pink-400"
                 gradientTo="to-rose-600"
-                backgroundImage="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=300&fit=crop"
+                backgroundImage="/images/women-development.jpg"
               />
             </a>
             <a href="/service/victims" className="block">
@@ -167,7 +246,7 @@ const Index = () => {
                 icon={Shield}
                 gradientFrom="from-yellow-400"
                 gradientTo="to-orange-600"
-                backgroundImage="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=400&h=300&fit=crop"
+                backgroundImage="/images/projects.jpg"
               />
             </a>
             <a href="/service/emergency" className="block">
@@ -176,7 +255,7 @@ const Index = () => {
                 icon={Zap}
                 gradientFrom="from-sky-400"
                 gradientTo="to-blue-700"
-                backgroundImage="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=400&h=300&fit=crop"
+                backgroundImage="/images/emergency.jpeg"
               />
             </a>
           </div>
@@ -269,39 +348,89 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Custom Scrollbar Styles */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          .no-scrollbar::-webkit-scrollbar {
+            display: none;
+          }
+          .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+        `
+      }} />
+      
       {/* Volunteers Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">OUR VOLUNTEER</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-800 mb-12 relative inline-block mx-auto">
+            OUR VOLUNTEERS
+            <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-gradient-to-r from-[#f15a24] to-orange-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+          </h2>
           
-          <div className="relative">
-            <div className="flex justify-center items-center space-x-4 overflow-hidden">
-              {volunteers.slice(currentVolunteer, currentVolunteer + 5).map((volunteer, index) => (
-                <div key={index} className="text-center min-w-[200px]">
-                  <div className="w-24 h-24 bg-gray-300 rounded-full mx-auto mb-4 overflow-hidden">
-                    <img 
-                      src={`https://images.unsplash.com/photo-${1494790108755 + index}-000000000000?w=150&h=150&fit=crop&crop=face`}
-                      alt={volunteer.name}
-                      className="w-full h-full object-cover"
-                    />
+          <div className="relative py-4">
+            <div className="w-full flex flex-nowrap justify-start lg:justify-center items-start gap-6 overflow-x-auto pb-6 px-4 no-scrollbar">
+              {volunteers.map((volunteer, index) => (
+                <div 
+                  key={index} 
+                  className="flex-shrink-0 w-52 group relative transition-all duration-300 hover:z-10"
+                >
+                  <div className="relative perspective-1000">
+                    {/* 3D Card Container */}
+                    <div className="relative w-36 h-36 mx-auto mb-4 transition-transform duration-700 ease-out group-hover:rotate-y-15 group-hover:scale-105">
+                      {/* Front of Card */}
+                      <div className="absolute inset-0 rounded-full border-4 border-white shadow-lg overflow-hidden transition-all duration-500 group-hover:border-[#f15a24] transform-style-preserve-3d backface-hidden">
+                        <img 
+                          src={volunteer.image}
+                          alt={volunteer.name}
+                          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(volunteer.name)}&background=f15a24&color=fff&size=256`;
+                          }}
+                        />
+                      </div>
+                      
+                      {/* Back of Card */}
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#f15a24] to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center transform rotate-y-180 backface-hidden">
+                        <div className="text-white text-center p-4">
+                          <p className="text-sm font-medium">{volunteer.role}</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <h4 className="font-semibold text-gray-800 text-sm mb-1">{volunteer.name}</h4>
-                  <p className="text-gray-600 text-xs">{volunteer.role}</p>
+                  
+                  {/* Text Content */}
+                  <div className="transform transition-all duration-300 group-hover:-translate-y-1">
+                    <h4 className="font-bold text-[#f15a24] text-lg mb-1 group-hover:text-orange-700 transition-colors duration-300">
+                      {volunteer.name}
+                    </h4>
+                    <p className="text-gray-600 text-xs font-medium bg-white/80 px-2 py-1 rounded-full inline-block group-hover:bg-[#f15a24]/10 group-hover:text-gray-800 transition-all duration-300">
+                      {volunteer.role.split(' ')[0]} {volunteer.role.split(' ')[1]}
+                    </p>
+                  </div>
+                  
+                  {/* Subtle Hover Indicator */}
+                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1/3 h-0.5 bg-[#f15a24] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
                 </div>
               ))}
             </div>
             
+            {/* Navigation Arrows */}
             <button 
               onClick={prevVolunteer}
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              className="absolute left-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-md text-[#f15a24] hover:bg-[#f15a24] hover:text-white transition-colors duration-300 transform hover:scale-110"
+              aria-label="Previous volunteer"
             >
-              <ChevronLeft size={32} />
+              <ChevronLeft size={28} />
             </button>
             <button 
               onClick={nextVolunteer}
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              className="absolute right-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-md text-[#f15a24] hover:bg-[#f15a24] hover:text-white transition-colors duration-300 transform hover:scale-110"
+              aria-label="Next volunteer"
             >
-              <ChevronRight size={32} />
+              <ChevronRight size={28} />
             </button>
           </div>
         </div>
@@ -328,14 +457,17 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {events.map((event, index) => (
-              <Card key={index} className="group relative overflow-hidden bg-white border-0 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3">
+            {events
+              .filter((_, index) => index < 3)
+              .map((event, index) => (
+               <Link to={`/event/${event.id}`}>
+                 <Card key={index} className="group relative overflow-hidden bg-white border-0 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 cursor-pointer">
                 {/* Image Container */}
-                <div className="relative h-56 overflow-hidden">
+                <div className="relative h-72 p-4">
                   <img 
                     src={event.image}
                     alt={event.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className={`w-full h-full ${event.id === '1' ? 'object-cover' : 'object-contain'} group-hover:scale-110 transition-transform duration-500`}
                   />
                   
                   {/* Category Badge */}
@@ -377,7 +509,7 @@ const Index = () => {
                       {event.participants}
                     </div>
                     
-                    <a href={`/event/${event.id}`}>
+                    <Link to={`/event/${event.id}`} className="inline-flex items-center">
                       <Button 
                         variant="ghost" 
                         size="sm" 
@@ -386,21 +518,27 @@ const Index = () => {
                         Read More
                         <ArrowRight size={16} className="ml-1" />
                       </Button>
-                    </a>
+                    </Link>
+                    <Link to={`/event/${event.id}`} className="absolute inset-0" aria-hidden="true"></Link>
                   </div>
                 </CardContent>
                 
                 {/* Hover Border Effect */}
                 <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#f15a24]/20 rounded-lg transition-all duration-300"></div>
-              </Card>
+                 </Card>
+               </Link>
             ))}
           </div>
           
           <div className="text-center mt-12">
-            <Button className="bg-gradient-to-r from-[#f15a24] to-orange-600 hover:from-orange-600 hover:to-[#f15a24] text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+            <Link to="/events" className="inline-flex items-center">
+              <Button 
+                className="bg-gradient-to-r from-[#f15a24] to-orange-600 hover:from-orange-600 hover:to-[#f15a24] text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+              >
               View All Events
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
+            </Link>
           </div>
         </div>
       </section>

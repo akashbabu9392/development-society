@@ -12,10 +12,16 @@ interface ServiceCardProps {
 const ServiceCard = ({ title, icon: Icon, gradientFrom, gradientTo, backgroundImage }: ServiceCardProps) => {
   return (
     <div className="group relative overflow-hidden rounded-2xl cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/20">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center opacity-20 group-hover:opacity-30 transition-opacity duration-300"
-        style={{ backgroundImage: `url(${backgroundImage})` }}
+      {/* Image */}
+      <img 
+        src={backgroundImage} 
+        alt={title} 
+        className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-300"
+        onError={(e) => {
+          const img = e.target as HTMLImageElement;
+          img.src = '/images/poorlogo.png';
+          console.error(`Image failed to load: ${backgroundImage}`);
+        }}
       />
       
       {/* Gradient Overlay */}
