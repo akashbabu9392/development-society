@@ -231,7 +231,7 @@ const Index = () => {
                 backgroundImage="/images/health.jpg"
               />
             </a>
-            <a href="/service/women" className="block">
+            <a href="/service/women-development" className="block">
               <ServiceCard
                 title="Women Development And Elderly Care Projects."
                 icon={Users}
@@ -362,29 +362,40 @@ const Index = () => {
       }} />
       
       {/* Volunteers Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-800 mb-12 relative inline-block mx-auto">
+      <section className="py-10 sm:py-12 bg-white">
+        <div className="container mx-auto px-3 sm:px-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-8 sm:mb-10 relative inline-block mx-auto">
             OUR VOLUNTEERS
-            <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-gradient-to-r from-[#f15a24] to-orange-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+            <span className="absolute -bottom-1.5 left-0 w-full h-0.5 bg-gradient-to-r from-[#f15a24] to-orange-400"></span>
           </h2>
           
-          <div className="relative py-4">
-            <div className="w-full flex flex-nowrap justify-start lg:justify-center items-start gap-6 overflow-x-auto pb-6 px-4 no-scrollbar">
-              {volunteers.map((volunteer, index) => (
+          <div className="relative py-4 sm:py-6">
+            <div className="relative w-full overflow-hidden">
+              <div className="relative w-full">
                 <div 
-                  key={index} 
-                  className="flex-shrink-0 w-52 group relative transition-all duration-300 hover:z-10"
+                  className="flex gap-6 sm:gap-8 py-3 sm:py-4 whitespace-nowrap"
+                  style={{
+                    display: 'inline-block',
+                    whiteSpace: 'nowrap',
+                    animation: 'scroll 20s linear infinite',
+                    paddingRight: '2rem'
+                  }}
                 >
-                  <div className="relative perspective-1000">
-                    {/* 3D Card Container */}
-                    <div className="relative w-36 h-36 mx-auto mb-4 transition-transform duration-700 ease-out group-hover:rotate-y-15 group-hover:scale-105">
-                      {/* Front of Card */}
-                      <div className="absolute inset-0 rounded-full border-4 border-white shadow-lg overflow-hidden transition-all duration-500 group-hover:border-[#f15a24] transform-style-preserve-3d backface-hidden">
+                  {[...volunteers, ...volunteers].map((volunteer, index) => (
+                    <div 
+                      key={index} 
+                      className="inline-flex flex-col items-center mx-2 sm:mx-3 w-40 sm:w-48 align-top"
+                      style={{
+                        display: 'inline-block',
+                        verticalAlign: 'top',
+                        whiteSpace: 'normal'
+                      }}
+                    >
+                      <div className="relative w-32 h-32 sm:w-36 sm:h-36 mb-2 sm:mb-3">
                         <img 
                           src={volunteer.image}
                           alt={volunteer.name}
-                          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                          className="w-full h-full object-cover rounded-full border-3 sm:border-4 border-white shadow-md"
                           onError={(e) => {
                             const target = e.target as HTMLImageElement;
                             target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(volunteer.name)}&background=f15a24&color=fff&size=256`;
@@ -392,48 +403,43 @@ const Index = () => {
                         />
                       </div>
                       
-                      {/* Back of Card */}
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#f15a24] to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center transform rotate-y-180 backface-hidden">
-                        <div className="text-white text-center p-4">
-                          <p className="text-sm font-medium">{volunteer.role}</p>
-                        </div>
+                      <div className="text-center px-1">
+                        <h4 className="font-bold text-[#f15a24] text-base sm:text-lg mb-0.5">
+                          {volunteer.name}
+                        </h4>
+                        <p className="text-gray-600 text-xs sm:text-sm font-medium">
+                          {volunteer.role}
+                        </p>
                       </div>
                     </div>
-                  </div>
-                  
-                  {/* Text Content */}
-                  <div className="transform transition-all duration-300 group-hover:-translate-y-1">
-                    <h4 className="font-bold text-[#f15a24] text-lg mb-1 group-hover:text-orange-700 transition-colors duration-300">
-                      {volunteer.name}
-                    </h4>
-                    <p className="text-gray-600 text-xs font-medium bg-white/80 px-2 py-1 rounded-full inline-block group-hover:bg-[#f15a24]/10 group-hover:text-gray-800 transition-all duration-300">
-                      {volunteer.role.split(' ')[0]} {volunteer.role.split(' ')[1]}
-                    </p>
-                  </div>
-                  
-                  {/* Subtle Hover Indicator */}
-                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1/3 h-0.5 bg-[#f15a24] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
-            
-            {/* Navigation Arrows */}
-            <button 
-              onClick={prevVolunteer}
-              className="absolute left-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-md text-[#f15a24] hover:bg-[#f15a24] hover:text-white transition-colors duration-300 transform hover:scale-110"
-              aria-label="Previous volunteer"
-            >
-              <ChevronLeft size={28} />
-            </button>
-            <button 
-              onClick={nextVolunteer}
-              className="absolute right-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-md text-[#f15a24] hover:bg-[#f15a24] hover:text-white transition-colors duration-300 transform hover:scale-110"
-              aria-label="Next volunteer"
-            >
-              <ChevronRight size={28} />
-            </button>
           </div>
         </div>
+
+        <style jsx global>{`
+          @keyframes scroll {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-50%);
+            }
+          }
+          
+          @media (min-width: 640px) {
+            @keyframes scroll {
+              0% {
+                transform: translateX(0);
+              }
+              100% {
+                transform: translateX(-50%);
+              }
+            }
+          }
+        `}</style>
       </section>
 
       {/* Enhanced Latest Events Section */}
@@ -460,73 +466,76 @@ const Index = () => {
             {events
               .filter((_, index) => index < 3)
               .map((event, index) => (
-               <Link to={`/event/${event.id}`}>
-                 <Card key={index} className="group relative overflow-hidden bg-white border-0 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 cursor-pointer">
-                {/* Image Container */}
-                <div className="relative h-72 p-4">
-                  <img 
-                    src={event.image}
-                    alt={event.title}
-                    className={`w-full h-full ${event.id === '1' ? 'object-cover' : 'object-contain'} group-hover:scale-110 transition-transform duration-500`}
-                  />
-                  
-                  {/* Category Badge */}
-                  <div className="absolute top-4 left-4 px-3 py-1 bg-gradient-to-r from-[#f15a24] to-orange-600 text-white text-xs font-semibold rounded-full shadow-lg">
-                    {event.category}
-                  </div>
-                  
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                
-                <CardContent className="p-6 relative">
-                  {/* Date and Location */}
-                  <div className="flex items-center justify-between mb-4 text-sm text-gray-500">
-                    <div className="flex items-center">
-                      <Calendar size={16} className="mr-2 text-[#f15a24]" />
-                      {event.date}
-                    </div>
-                    <div className="flex items-center">
-                      <MapPin size={16} className="mr-1 text-[#f15a24]" />
-                      {event.location}
-                    </div>
-                  </div>
-                  
-                  {/* Title */}
-                  <h3 className="font-bold text-gray-800 text-xl mb-3 group-hover:text-[#f15a24] transition-colors duration-300 line-clamp-2">
-                    {event.title}
-                  </h3>
-                  
-                  {/* Description */}
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-3 leading-relaxed">
-                    {event.description}
-                  </p>
-                  
-                  {/* Participants Info */}
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                    <div className="flex items-center text-sm text-gray-500">
-                      <Users size={16} className="mr-2 text-[#f15a24]" />
-                      {event.participants}
+                <div key={index} className="h-full group">
+                  <Card className="relative overflow-hidden bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 h-full flex flex-col transform hover:-translate-y-1">
+                    {/* Image Container */}
+                    <div className="relative h-60 w-full overflow-hidden rounded-t-xl">
+                      <img 
+                        src={event.image}
+                        alt={event.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.onerror = null;
+                          target.src = '/images/placeholder.jpg';
+                        }}
+                      />
+                      
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <div className="flex items-center bg-[#f15a24] text-white text-xs font-medium px-3 py-1 rounded-full">
+                          {event.category}
+                        </div>
+                      </div>
                     </div>
                     
-                    <Link to={`/event/${event.id}`} className="inline-flex items-center">
-                      <Button 
-                        variant="ghost" 
-                        size="sm" 
-                        className="text-[#f15a24] hover:text-orange-600 hover:bg-orange-50 p-2 group-hover:translate-x-1 transition-all duration-300"
-                      >
-                        Read More
-                        <ArrowRight size={16} className="ml-1" />
-                      </Button>
-                    </Link>
-                    <Link to={`/event/${event.id}`} className="absolute inset-0" aria-hidden="true"></Link>
-                  </div>
-                </CardContent>
-                
-                {/* Hover Border Effect */}
-                <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#f15a24]/20 rounded-lg transition-all duration-300"></div>
-                 </Card>
-               </Link>
+                    {/* Card Content */}
+                    <CardContent className="p-5 flex-1 flex flex-col">
+                      {/* Date */}
+                      <div className="flex items-center text-sm text-[#f15a24] font-medium mb-2">
+                        <Calendar size={14} className="mr-1.5" />
+                        {event.date}
+                      </div>
+                      
+                      {/* Title */}
+                      <h3 className="text-xl font-bold text-gray-800 mb-3 line-clamp-2 leading-tight">
+                        {event.title}
+                      </h3>
+                      
+                      {/* Description */}
+                      <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-1">
+                        {event.description}
+                      </p>
+                      
+                      {/* Footer */}
+                      <div className="mt-auto pt-3 border-t border-gray-100">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center text-sm text-gray-500">
+                            <MapPin size={14} className="mr-1.5 text-[#f15a24]" />
+                            <span className="line-clamp-1">{event.location}</span>
+                          </div>
+                          
+                          {event.participants && (
+                            <div className="flex items-center text-sm text-gray-500">
+                              <Users size={14} className="mr-1.5 text-[#f15a24]" />
+                              {event.participants}
+                            </div>
+                          )}
+                        </div>
+                        
+                        <div className="mt-4">
+                          <Link to={`/event/${event.id}`} className="inline-flex items-center text-sm font-medium text-[#f15a24] hover:text-orange-600 transition-colors">
+                            Learn more
+                            <ArrowRight size={16} className="ml-1.5" />
+                          </Link>
+                        </div>
+                      </div>
+                    </CardContent>
+                    
+                    {/* Clickable overlay */}
+                    <Link to={`/event/${event.id}`} className="absolute inset-0" aria-label={`View ${event.title}`}></Link>
+                  </Card>
+                </div>
             ))}
           </div>
           

@@ -17,6 +17,7 @@ import Event4 from "./pages/events/Event4";
 import Event5 from "./pages/events/Event5";
 import Event6 from "./pages/events/Event6";
 import ServiceDetail from "./pages/ServiceDetail";
+import VisionMission from "./pages/VisionMission";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -41,6 +42,7 @@ const App = () => (
           <Route path="/event/4" element={<Event4 />} />
           <Route path="/event/5" element={<Event5 />} />
           <Route path="/event/6" element={<Event6 />} />
+          <Route path="/about/vision-mission" element={<VisionMission />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

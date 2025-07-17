@@ -1,8 +1,9 @@
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Calendar, MapPin, Users, ArrowLeft, ArrowRight } from 'lucide-react';
+import PageHeader from '@/components/PageHeader';
 import { Link } from 'react-router-dom';
+import { Calendar, MapPin, Users, ArrowLeft, ArrowRight } from 'lucide-react';
 
 const Events = () => {
   const events = [
@@ -70,92 +71,87 @@ const Events = () => {
 
   return (
     <Layout>
-      <section className="py-16 bg-gray-50">
+      <section className="py-12 md:py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="flex items-center mb-8">
-            <Link to="/" className="flex items-center text-gray-600 hover:text-gray-800 transition-colors duration-300">
-              <ArrowLeft className="mr-2" />
-              Back to Home
-            </Link>
-          </div>
-
-          <div className="text-center mb-12">
-            <p className="text-[#f15a24] text-lg mb-2 font-medium">Community Impact</p>
-            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-6">
-              ALL EVENTS
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              Discover our recent initiatives and community outreach programs making a difference in people's lives.
-            </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-[#f15a24] to-orange-400 mx-auto rounded-full mt-6"></div>
-          </div>
+          <PageHeader 
+            title="ALL EVENTS"
+            description="Discover our recent initiatives and community outreach programs making a difference in people's lives."
+            backText="Back to Home"
+            backLink="/"
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {events.map((event, index) => (
-              <Link to={`/event/${event.id}`}>
-                <Card key={index} className="group relative overflow-hidden bg-white border-0 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 cursor-pointer">
+              <div key={index} className="h-full group">
+                <Card className="relative overflow-hidden bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 h-full flex flex-col transform hover:-translate-y-1">
                   {/* Image Container */}
-                  <div className="relative h-72 p-4">
+                  <div className="relative h-60 w-full overflow-hidden rounded-t-xl">
                     <img 
                       src={event.image}
                       alt={event.title}
-                      className={`w-full h-full ${['1', '6'].includes(event.id) ? 'object-cover' : 'object-contain'} group-hover:scale-110 transition-transform duration-500`}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.onerror = null;
+                        target.src = '/images/placeholder.jpg';
+                      }}
                     />
                     
-                    {/* Category Badge */}
-                    <div className="absolute top-4 left-4 px-3 py-1 bg-gradient-to-r from-[#f15a24] to-orange-600 text-white text-xs font-semibold rounded-full shadow-lg">
-                      {event.category}
-                    </div>
-                    
                     {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                      <div className="flex items-center bg-[#f15a24] text-white text-xs font-medium px-3 py-1 rounded-full">
+                        {event.category}
+                      </div>
+                    </div>
                   </div>
                   
-                  <CardContent className="p-6 relative">
-                    {/* Date and Location */}
-                    <div className="flex items-center justify-between mb-4 text-sm text-gray-500">
-                      <div className="flex items-center">
-                        <Calendar size={16} className="mr-2 text-[#f15a24]" />
-                        {event.date}
-                      </div>
-                      <div className="flex items-center">
-                        <MapPin size={16} className="mr-1 text-[#f15a24]" />
-                        Development Society for Poor
-                      </div>
+                  {/* Card Content */}
+                  <CardContent className="p-5 flex-1 flex flex-col">
+                    {/* Date */}
+                    <div className="flex items-center text-sm text-[#f15a24] font-medium mb-2">
+                      <Calendar size={14} className="mr-1.5" />
+                      {event.date}
                     </div>
                     
                     {/* Title */}
-                    <h3 className="font-bold text-gray-800 text-xl mb-3 group-hover:text-[#f15a24] transition-colors duration-300 line-clamp-2">
+                    <h3 className="text-xl font-bold text-gray-800 mb-3 line-clamp-2 leading-tight">
                       {event.title}
                     </h3>
                     
                     {/* Description */}
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-3 leading-relaxed">
+                    <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-1">
                       {event.description}
                     </p>
                     
-                    {/* Participants Info */}
-                    <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                      <div className="flex items-center text-sm text-gray-500">
-                        <Users size={16} className="mr-2 text-[#f15a24]" />
-                        {event.participants}
+                    {/* Footer */}
+                    <div className="mt-auto pt-3 border-t border-gray-100">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center text-sm text-gray-500">
+                          <MapPin size={14} className="mr-1.5 text-[#f15a24]" />
+                          <span className="line-clamp-1">{event.location}</span>
+                        </div>
+                        
+                        {event.participants && (
+                          <div className="flex items-center text-sm text-gray-500">
+                            <Users size={14} className="mr-1.5 text-[#f15a24]" />
+                            {event.participants}
+                          </div>
+                        )}
                       </div>
                       
-                      <Button 
-                        variant="ghost" 
-                        size="sm" 
-                        className="text-[#f15a24] hover:text-orange-600 hover:bg-orange-50 p-2 group-hover:translate-x-1 transition-all duration-300"
-                      >
-                        Read More
-                        <ArrowRight size={16} className="ml-1" />
-                      </Button>
+                      <div className="mt-4">
+                        <Link to={`/event/${event.id}`} className="inline-flex items-center text-sm font-medium text-[#f15a24] hover:text-orange-600 transition-colors">
+                          Learn more
+                          <ArrowRight size={16} className="ml-1.5" />
+                        </Link>
+                      </div>
                     </div>
                   </CardContent>
                   
-                  {/* Hover Border Effect */}
-                  <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#f15a24]/20 rounded-lg transition-all duration-300"></div>
+                  {/* Clickable overlay */}
+                  <Link to={`/event/${event.id}`} className="absolute inset-0" aria-label={`View ${event.title}`}></Link>
                 </Card>
-              </Link>
+              </div>
             ))}
           </div>
         </div>

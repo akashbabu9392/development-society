@@ -61,7 +61,7 @@ const Header = () => {
                 </button>
                 <div className="absolute top-full left-0 w-64 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <Link to="/about" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">About the Organization</Link>
-                  <Link to="/vision-mission" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Vision & Mission</Link>
+                  <Link to="/about/vision-mission" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Vision & Mission</Link>
                   <Link to="/executive-body" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Executive Body Members</Link>
                   <Link to="/president-message" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Message from President</Link>
                   <Link to="/policies" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Our Policies</Link>
@@ -124,8 +124,8 @@ const Header = () => {
                   </button>
                   {openDropdown === 'about' && (
                     <div className="pl-8 space-y-1">
-                      <Link to="/about" className="block px-4 py-2 text-gray-600 hover:bg-gray-100">About the Organization</Link>
-                      <Link to="/vision-mission" className="block px-4 py-2 text-gray-600 hover:bg-gray-100">Vision & Mission</Link>
+                      <Link to="/about" className="block py-2 px-4 hover:bg-gray-100">About the Organization</Link>
+                      <Link to="/about/vision-mission" className="block py-2 px-4 hover:bg-gray-100">Vision & Mission</Link>
                       <Link to="/executive-body" className="block px-4 py-2 text-gray-600 hover:bg-gray-100">Executive Body Members</Link>
                       <Link to="/president-message" className="block px-4 py-2 text-gray-600 hover:bg-gray-100">Message from President</Link>
                       <Link to="/policies" className="block px-4 py-2 text-gray-600 hover:bg-gray-100">Our Policies</Link>

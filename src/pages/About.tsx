@@ -74,6 +74,23 @@ const About = () => {
             ))}
           </div>
           
+          {/* Vision & Mission CTA */}
+          <div className="mt-12 text-center">
+            <h3 className="text-2xl font-semibold text-gray-800 mb-4">Our Guiding Principles</h3>
+            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+              Learn more about our vision, mission, and core values that drive our work and shape our approach to community development.
+            </p>
+            <a 
+              href="/about/vision-mission" 
+              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-[#f15a24] hover:bg-orange-600 transition-colors duration-200"
+            >
+              View Our Vision & Mission
+              <svg className="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+          </div>
+          
           {/* Organization Description */}
           <div className="mt-16 max-w-6xl mx-auto">
             <p className="text-gray-700 leading-relaxed text-justify">
@@ -86,6 +103,8 @@ const About = () => {
               up approach and are evolved at the community level.
             </p>
           </div>
+
+          {/* Removed Vision & Mission section as it's now a separate page */}
         </div>
       </section>
     </Layout>
