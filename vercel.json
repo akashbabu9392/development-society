@@ -1,12 +1,16 @@
 {
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/service/(.*)", "dest": "/service" },
-    { "src": "/event/(.*)", "dest": "/event" },
-    { "src": "/about/vision-mission", "dest": "/about/vision-mission" },
-    { "src": "/(.*)", "dest": "/" }
-  ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/service/(.*)",
+      "destination": "/"
+    },
+    {
+      "source": "/event/(.*)",
+      "destination": "/"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }
