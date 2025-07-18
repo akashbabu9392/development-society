@@ -3,7 +3,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Services from "./pages/Services";
@@ -18,7 +19,12 @@ import Event5 from "./pages/events/Event5";
 import Event6 from "./pages/events/Event6";
 import ServiceDetail from "./pages/ServiceDetail";
 import VisionMission from "./pages/VisionMission";
-import NotFound from "./pages/NotFound";
+import ExecutiveBody from "./pages/ExecutiveBody";
+import PresidentMessage from './pages/PresidentMessage';
+import Policies from './pages/Policies';
+import AnnualReports from './pages/AnnualReports';
+import AuditReports from './pages/AuditReports';
+import NotFound from './pages/NotFound';
 
 const queryClient = new QueryClient();
 
@@ -28,6 +34,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
@@ -43,8 +50,15 @@ const App = () => (
           <Route path="/event/5" element={<Event5 />} />
           <Route path="/event/6" element={<Event6 />} />
           <Route path="/about/vision-mission" element={<VisionMission />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
+          <Route path="/executive-body" element={<ExecutiveBody />} />
+          <Route path="/president-message" element={<PresidentMessage />} />
+          <Route path="/policies" element={<Policies />} />
+          <Route path="/annual-reports" element={<AnnualReports />} />
+          <Route path="/audit-reports" element={<AuditReports />} />
+          {/* Handle all other routes */}
+          <Route path="/" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<Navigate to="/not-found" replace />} />
+          <Route path="/not-found" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

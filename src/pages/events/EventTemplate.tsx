@@ -29,54 +29,7 @@ type EventTemplateProps = {
 export const EventTemplate = ({ event }: EventTemplateProps) => {
   const navigate = useNavigate();
 
-  // Get all events and filter out the current one
-  const allEvents = [
-    {
-      id: '1',
-      title: "Children's Day Celebration",
-      date: "November 14, 2023",
-      image: "/images/event1.jpg",
-      category: "Children"
-    },
-    {
-      id: '2',
-      title: "Old Age Home Visit",
-      date: "October 1, 2023",
-      image: "/images/event2.jpg",
-      category: "Elderly"
-    },
-    {
-      id: '3',
-      title: "Free Medical Camp",
-      date: "March 15, 2023",
-      image: "/images/event3.jpg",
-      category: "Health Camp"
-    },
-    {
-      id: '4',
-      title: "Educational Scholarship Distribution",
-      date: "January 20, 2024",
-      image: "/images/event4.jpg",
-      category: "Education"
-    },
-    {
-      id: '5',
-      title: "Women Empowerment Workshop",
-      date: "February 28, 2024",
-      image: "/images/event5.jpg",
-      category: "Women Development"
-    },
-    {
-      id: '6',
-      title: "Tree Plantation Drive",
-      date: "June 5, 2024",
-      image: "/images/event6.jpg",
-      category: "Environment"
-    }
-  ];
-
-  // Filter out current event and get up to 3 related events
-  const relatedEvents = allEvents.filter(e => e.id !== event.id).slice(0, 3);
+  // Related events have been removed as per request
 
   return (
     <Layout>
@@ -160,40 +113,7 @@ export const EventTemplate = ({ event }: EventTemplateProps) => {
                   ))}
                 </div>
               </div>
-              
-              {/* Related Events */}
-              <div className="mb-8">
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4">Related Events</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {relatedEvents.map((relatedEvent) => (
-                    <Link 
-                      key={relatedEvent.id} 
-                      to={`/events/${relatedEvent.id}`}
-                      className="block group"
-                    >
-                      <Card className="h-full overflow-hidden transition-shadow hover:shadow-lg">
-                        <div className="h-40 overflow-hidden">
-                          <img 
-                            src={relatedEvent.image} 
-                            alt={relatedEvent.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                          />
-                        </div>
-                        <CardContent className="p-4">
-                          <div className="text-xs font-medium text-[#f15a24] mb-1">{relatedEvent.category}</div>
-                          <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2">
-                            {relatedEvent.title}
-                          </h3>
-                          <div className="flex items-center text-xs text-gray-500">
-                            <Calendar size={12} className="mr-1" />
-                            {relatedEvent.date}
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </Link>
-                  ))}
-                </div>
-              </div>
+
             </div>
             
             {/* Sidebar */}
