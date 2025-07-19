@@ -1,5 +1,8 @@
 import Layout from '@/components/Layout';
+import Breadcrumb from '@/components/Breadcrumb';
 import { Shield, HeartHandshake, Gavel, Scale, RefreshCw, Users } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const Policies = () => {
   const policies = [
@@ -49,17 +52,18 @@ const Policies = () => {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          {/* Header Section */}
-          <div className="text-center mb-16">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">Our Policies</h1>
+      <Breadcrumb title="Our Policies" />
+      
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Policies</h1>
             <div className="w-24 h-1.5 bg-gradient-to-r from-[#4e73df] to-[#1cc88a] rounded-full mx-auto mb-6"></div>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
               At Development Society for Poor, we are committed to maintaining the highest standards of <span className="font-semibold text-[#4e73df]">transparency</span>, <span className="font-semibold text-[#1cc88a]">accountability</span>, and <span className="font-semibold text-[#f6c23e]">ethical practices</span> in all our operations.
             </p>
           </div>
-
+          
           {/* Policies Grid */}
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {policies.map((policy, index) => (
@@ -87,23 +91,17 @@ const Policies = () => {
                 If you have any questions about our policies or need further clarification, please don't hesitate to contact us. We're here to help!
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="/contact"
-                  className="px-8 py-3 bg-white text-[#4e73df] font-semibold rounded-md hover:bg-gray-100 transition-colors text-center shadow-md hover:shadow-lg"
-                >
-                  Contact Us
-                </a>
-                <a
-                  href="/about"
-                  className="px-8 py-3 border-2 border-white text-white font-semibold rounded-md hover:bg-white/10 transition-colors text-center"
-                >
-                  Learn More About Us
-                </a>
+                <Button asChild className="bg-white text-[#4e73df] hover:bg-gray-100">
+                  <Link to="/contact">Contact Us</Link>
+                </Button>
+                <Button asChild variant="outline" className="border-white text-white hover:bg-white/10">
+                  <Link to="/about">Learn More About Us</Link>
+                </Button>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </Layout>
   );
 };

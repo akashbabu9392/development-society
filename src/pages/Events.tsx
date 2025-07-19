@@ -1,7 +1,7 @@
 import Layout from '@/components/Layout';
+import Breadcrumb from '@/components/Breadcrumb';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import PageHeader from '@/components/PageHeader';
 import { Link } from 'react-router-dom';
 import { Calendar, MapPin, Users, ArrowLeft, ArrowRight } from 'lucide-react';
 
@@ -23,7 +23,7 @@ const Events = () => {
       date: "January 30, 2023",
       location: "Development Society for Poor",
       description: "Emergency Flood Relief Activity – 2019",
-      image: "/images/event2.jpg",
+      image: "/images/event2.png",
       category: "Events",
       participants: ""
     },
@@ -71,89 +71,87 @@ const Events = () => {
 
   return (
     <Layout>
-      <section className="py-12 md:py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <PageHeader 
-            title="ALL EVENTS"
-            description="Discover our recent initiatives and community outreach programs making a difference in people's lives."
-            backText="Back to Home"
-            backLink="/"
-          />
+      <Breadcrumb title="Our Events" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {events.map((event, index) => (
-              <div key={index} className="h-full group">
-                <Card className="relative overflow-hidden bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 h-full flex flex-col transform hover:-translate-y-1">
-                  {/* Image Container */}
-                  <div className="relative h-60 w-full overflow-hidden rounded-t-xl">
-                    <img 
-                      src={event.image}
-                      alt={event.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.onerror = null;
-                        target.src = '/images/placeholder.jpg';
-                      }}
-                    />
-                    
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                      <div className="flex items-center bg-[#f15a24] text-white text-xs font-medium px-3 py-1 rounded-full">
-                        {event.category}
-                      </div>
+      {/* Events Section */}
+      <section className="py-12 bg-gray-50">
+        <div className="container mx-auto px-4 text-center mb-12">
+          <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">Our Events</h1>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            Stay updated with our latest events and activities. Join us in making a difference in the community.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-4">
+          {events.map((event) => (
+            <div key={event.id} className="h-full group">
+              <Card className="relative overflow-hidden bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 h-full flex flex-col transform hover:-translate-y-1">
+                {/* Image Container */}
+                <div className="relative h-60 w-full overflow-hidden rounded-t-xl">
+                  <img 
+                    src={event.image}
+                    alt={event.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.onerror = null;
+                      target.src = '/images/placeholder.jpg';
+                    }}
+                  />
+                  
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                    <div className="flex items-center bg-[#f15a24] text-white text-xs font-medium px-3 py-1 rounded-full">
+                      {event.category}
                     </div>
                   </div>
+                </div>
+                
+                {/* Card Content */}
+                <CardContent className="p-5 flex-1 flex flex-col">
+                  {/* Date */}
+                  <div className="flex items-center text-sm text-[#f15a24] font-medium mb-2">
+                    <Calendar size={14} className="mr-1.5" />
+                    {event.date}
+                  </div>
                   
-                  {/* Card Content */}
-                  <CardContent className="p-5 flex-1 flex flex-col">
-                    {/* Date */}
-                    <div className="flex items-center text-sm text-[#f15a24] font-medium mb-2">
-                      <Calendar size={14} className="mr-1.5" />
-                      {event.date}
-                    </div>
-                    
-                    {/* Title */}
-                    <h3 className="text-xl font-bold text-gray-800 mb-3 line-clamp-2 leading-tight">
-                      {event.title}
-                    </h3>
-                    
-                    {/* Description */}
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-1">
-                      {event.description}
-                    </p>
-                    
-                    {/* Footer */}
-                    <div className="mt-auto pt-3 border-t border-gray-100">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center text-sm text-gray-500">
-                          <MapPin size={14} className="mr-1.5 text-[#f15a24]" />
-                          <span className="line-clamp-1">{event.location}</span>
-                        </div>
-                        
-                        {event.participants && (
-                          <div className="flex items-center text-sm text-gray-500">
-                            <Users size={14} className="mr-1.5 text-[#f15a24]" />
-                            {event.participants}
-                          </div>
-                        )}
+                  {/* Title */}
+                  <h3 className="text-xl font-bold text-gray-800 mb-3 line-clamp-2 leading-tight">
+                    {event.title}
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-1">
+                    {event.description}
+                  </p>
+                  
+                  {/* Footer */}
+                  <div className="mt-auto pt-3 border-t border-gray-100">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center text-sm text-gray-500">
+                        <MapPin size={14} className="mr-1.5 text-[#f15a24]" />
+                        <span className="line-clamp-1">{event.location}</span>
                       </div>
                       
-                      <div className="mt-4">
-                        <Link to={`/event/${event.id}`} className="inline-flex items-center text-sm font-medium text-[#f15a24] hover:text-orange-600 transition-colors">
-                          Learn more
-                          <ArrowRight size={16} className="ml-1.5" />
-                        </Link>
-                      </div>
+                      {event.participants && (
+                        <div className="flex items-center text-sm text-gray-500">
+                          <Users size={14} className="mr-1.5 text-[#f15a24]" />
+                          {event.participants}
+                        </div>
+                      )}
                     </div>
-                  </CardContent>
-                  
-                  {/* Clickable overlay */}
-                  <Link to={`/event/${event.id}`} className="absolute inset-0" aria-label={`View ${event.title}`}></Link>
-                </Card>
-              </div>
-            ))}
-          </div>
+                    
+                    <div className="mt-4">
+                      <Link to={`/event/${event.id}`} className="inline-flex items-center text-sm font-medium text-[#f15a24] hover:text-orange-600 transition-colors">
+                        Learn more
+                        <ArrowRight size={16} className="ml-1.5" />
+                      </Link>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          ))}
         </div>
       </section>
     </Layout>

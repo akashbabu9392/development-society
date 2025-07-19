@@ -1,19 +1,22 @@
 
 import Layout from '@/components/Layout';
-import PageHeader from '@/components/PageHeader';
+import Breadcrumb from '@/components/Breadcrumb';
 
 const Services = () => {
   return (
     <Layout>
+      <Breadcrumb title="Our Services" />
+      
       {/* Services Content */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <PageHeader 
-            title="Our Services"
-            description="To be more relevant in our approach we divided our projects into 5 sectors according to their characteristic nature of addressing the concerns of the poor."
-            backText="Back to Home"
-            backLink="/"
-          />
+      <section className="bg-white">
+        <div className="container mx-auto px-4 py-8">
+          <div className="text-center max-w-4xl mx-auto mb-12">
+            <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">Our Services</h1>
+            <p className="text-lg text-gray-600">
+              To be more relevant in our approach we divided our projects into 5 sectors according to their 
+              characteristic nature of addressing the concerns of the poor.
+            </p>
+          </div>
 
           <div className="max-w-6xl mx-auto space-y-12">
             {/* Educational and Vocational Skill Training Projects */}

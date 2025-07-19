@@ -8,7 +8,7 @@ const Event2 = () => {
     time: "10:00 AM - 4:00 PM",
     location: "Development Society for Poor",
     description: "Emergency Flood Relief Activity – 2019",
-    image: "/images/event2.jpg",
+    image: "/images/event2.png",
     category: "Disaster Relief",
     participants: "50+ volunteers",
     overview: "In response to severe flooding in our region, our organization mobilized quickly to provide immediate relief to affected families. Our team distributed essential supplies and coordinated with local authorities for effective disaster management.",
@@ -27,9 +27,9 @@ const Event2 = () => {
       "Community resilience building workshops"
     ],
     gallery: [
-      "/images/event2.jpg",
-      "/images/event2-1.jpg",
-      "/images/event2-2.jpg"
+      "/images/event2.png",
+      "/images/event2-1.png",
+      "/images/event2-2.png"
     ]
   };
 

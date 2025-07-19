@@ -3,6 +3,14 @@ import Layout from '@/components/Layout';
 import ServiceCard from '@/components/ServiceCard';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+
+// Add type definitions for styled-jsx
+declare module 'react' {
+  interface StyleHTMLAttributes<T> extends React.HTMLAttributes<T> {
+    jsx?: boolean;
+    global?: boolean;
+  }
+}
 import { Card, CardContent } from '@/components/ui/card';
 import { 
   GraduationCap, 
@@ -87,7 +95,7 @@ const Index = () => {
       date: "January 30, 2023",
       location: "Development Society for Poor",
       description: "Emergency Flood Relief Activity – 2019",
-      image: "/images/event2.jpg",
+      image: "/images/event2.png",
       category: "Events",
       participants: ""
     },
@@ -165,17 +173,17 @@ const Index = () => {
         {/* Navigation Arrows */}
         <button 
           onClick={() => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 text-white/80 hover:text-white p-3 transition-all duration-300"
           aria-label="Previous slide"
         >
-          <ChevronLeft size={24} />
+          <ChevronLeft size={28} />
         </button>
         <button 
           onClick={() => setCurrentSlide((prev) => (prev + 1) % heroSlides.length)}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 text-white/80 hover:text-white p-3 transition-all duration-300"
           aria-label="Next slide"
         >
-          <ChevronRight size={24} />
+          <ChevronRight size={28} />
         </button>
         
         <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
@@ -184,20 +192,6 @@ const Index = () => {
             <p className="text-xl md:text-2xl mb-8 animate-fadeIn text-white">{heroSlides[currentSlide].subtitle}</p>
           </div>
         </div>
-        
-        {/* Navigation Arrows */}
-        <button 
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white z-20"
-          onClick={() => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
-        >
-          <ChevronLeft size={40} />
-        </button>
-        <button 
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white z-20"
-          onClick={() => setCurrentSlide((prev) => (prev + 1) % heroSlides.length)}
-        >
-          <ChevronRight size={40} />
-        </button>
       </section>
 
       {/* Our Services Section */}
@@ -386,28 +380,34 @@ const Index = () => {
                       key={index} 
                       className="inline-flex flex-col items-center mx-2 sm:mx-3 w-40 sm:w-48 align-top"
                       style={{
-                        display: 'inline-block',
+                        display: 'inline-flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        width: '160px',
+                        margin: '0 8px',
                         verticalAlign: 'top',
                         whiteSpace: 'normal'
                       }}
                     >
-                      <div className="relative w-32 h-32 sm:w-36 sm:h-36 mb-2 sm:mb-3">
-                        <img 
-                          src={volunteer.image}
-                          alt={volunteer.name}
-                          className="w-full h-full object-cover rounded-full border-3 sm:border-4 border-white shadow-md"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(volunteer.name)}&background=f15a24&color=fff&size=256`;
-                          }}
-                        />
+                      <div className="relative w-32 h-32 sm:w-36 sm:h-36 mb-3 sm:mb-4 flex-shrink-0">
+                        <div className="w-full h-full rounded-full overflow-hidden border-3 sm:border-4 border-white shadow-md flex items-center justify-center bg-gray-100">
+                          <img 
+                            src={volunteer.image}
+                            alt={volunteer.name}
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(volunteer.name)}&background=f15a24&color=fff&size=256`;
+                            }}
+                          />
+                        </div>
                       </div>
                       
-                      <div className="text-center px-1">
-                        <h4 className="font-bold text-[#f15a24] text-base sm:text-lg mb-0.5">
+                      <div className="w-full text-center px-1 flex flex-col items-center">
+                        <h4 className="font-bold text-[#f15a24] text-base sm:text-lg mb-1 w-full break-words px-2">
                           {volunteer.name}
                         </h4>
-                        <p className="text-gray-600 text-xs sm:text-sm font-medium">
+                        <p className="text-gray-600 text-xs sm:text-sm font-medium w-full break-words px-2">
                           {volunteer.role}
                         </p>
                       </div>

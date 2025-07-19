@@ -1,106 +1,127 @@
-
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 import Layout from '@/components/Layout';
+import Breadcrumb from '@/components/Breadcrumb';
+
+interface GalleryImage {
+  id: number;
+  src: string;
+  alt: string;
+  category: string;
+}
+
+const GALLERY_IMAGES: GalleryImage[] = [
+  {
+    id: 1,
+    src: "/images/gallery/education-1.jpg",
+    alt: "Rural Education Program",
+    category: "education"
+  },
+  {
+    id: 2,
+    src: "/images/gallery/healthcare-1.jpg",
+    alt: "Medical Camp",
+    category: "healthcare"
+  },
+  {
+    id: 3,
+    src: "/images/gallery/women-1.jpg",
+    alt: "Women's Self-Help Group",
+    category: "women"
+  },
+  {
+    id: 4,
+    src: "/images/gallery/elderly-1.jpg",
+    alt: "Elderly Care Center",
+    category: "elderly"
+  },
+  {
+    id: 5,
+    src: "/images/gallery/community-1.jpg",
+    alt: "Community Development Program",
+    category: "community"
+  },
+  {
+    id: 6,
+    src: "/images/gallery/education-2.jpg",
+    alt: "School Renovation Project",
+    category: "education"
+  }
+];
+
+const GALLERY_CATEGORIES = [
+  { id: 'all', name: 'All' },
+  { id: 'education', name: 'Education' },
+  { id: 'healthcare', name: 'Healthcare' },
+  { id: 'women', name: 'Women' },
+  { id: 'elderly', name: 'Elderly' },
+  { id: 'community', name: 'Community' }
+];
 
 const Gallery = () => {
-  const [activeTab, setActiveTab] = useState('women');
-
-  const galleryImages = {
-    women: [
-      {
-        src: "/lovable-uploads/6c8a0771-1000-49c8-8970-24dbb4bd7a5c.png",
-        alt: "Women Development Program"
-      }
-    ],
-    health: [
-      {
-        src: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop",
-        alt: "Health Project"
-      }
-    ]
-  };
+  const [activeTab, setActiveTab] = useState('all');
+  
+  // Filter images based on active tab
+  const filteredImages = activeTab === 'all' 
+    ? GALLERY_IMAGES 
+    : GALLERY_IMAGES.filter(image => image.category === activeTab);
 
   return (
     <Layout>
-      {/* Header Section */}
-      <section className="bg-gray-800 text-white py-16">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center">
-            <h1 className="text-3xl md:text-4xl font-bold">Gallery</h1>
-            <nav className="text-sm">
-              <span className="text-gray-300">Home</span>
-              <span className="mx-2">›</span>
-              <span>Gallery</span>
-            </nav>
-          </div>
-        </div>
-      </section>
+      <Breadcrumb title="Gallery" />
 
-      {/* Gallery Content */}
-      <section className="py-16 bg-white">
+      {/* Main Content */}
+      <div className="min-h-screen bg-gray-50 py-12">
         <div className="container mx-auto px-4">
-          {/* Tab Navigation */}
-          <div className="flex flex-col md:flex-row justify-center mb-12 space-y-4 md:space-y-0 md:space-x-8">
-            <button
-              onClick={() => setActiveTab('women')}
-              className={`px-6 py-3 text-sm font-medium border-b-2 transition-colors ${
-                activeTab === 'women'
-                  ? 'border-[#f15a24] text-[#f15a24]'
-                  : 'border-transparent text-gray-600 hover:text-[#f15a24]'
-              }`}
-            >
-              Women Development and Elderly Care Projects
-            </button>
-            <button
-              onClick={() => setActiveTab('health')}
-              className={`px-6 py-3 text-sm font-medium border-b-2 transition-colors ${
-                activeTab === 'health'
-                  ? 'border-[#f15a24] text-[#f15a24]'
-                  : 'border-transparent text-gray-600 hover:text-[#f15a24]'
-              }`}
-            >
-              Health and Projects for the differently Abled
-            </button>
+          <h1 className="text-3xl font-bold text-center mb-8">Our Gallery</h1>
+          
+          {/* Category Filter */}
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
+            {GALLERY_CATEGORIES.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setActiveTab(category.id)}
+                className={`px-4 py-2 rounded-full text-sm font-medium ${
+                  activeTab === category.id
+                    ? 'bg-[#f15a24] text-white'
+                    : 'bg-white text-gray-700 hover:bg-gray-100'
+                }`}
+              >
+                {category.name}
+              </button>
+            ))}
           </div>
 
-          {/* Gallery Content */}
-          <div className="max-w-6xl mx-auto">
-            {activeTab === 'women' && (
-              <div>
-                <h3 className="text-2xl font-bold text-center mb-8">Women Development</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {galleryImages.women.map((image, index) => (
-                    <div key={index} className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                      <img 
-                        src={image.src}
-                        alt={image.alt}
-                        className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                  ))}
+          {/* Image Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredImages.map((image) => (
+              <div 
+                key={image.id} 
+                className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+              >
+                <img 
+                  src={image.src} 
+                  alt={image.alt} 
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="font-medium">{image.alt}</h3>
+                  <span className="text-sm text-gray-500">
+                    {GALLERY_CATEGORIES.find(cat => cat.id === image.category)?.name}
+                  </span>
                 </div>
               </div>
-            )}
-
-            {activeTab === 'health' && (
-              <div>
-                <h3 className="text-2xl font-bold text-center mb-8">Health Projects</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {galleryImages.health.map((image, index) => (
-                    <div key={index} className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                      <img 
-                        src={image.src}
-                        alt={image.alt}
-                        className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+            ))}
           </div>
+
+          {filteredImages.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-gray-500">No images found in this category.</p>
+            </div>
+          )}
         </div>
-      </section>
+      </div>
     </Layout>
   );
 };

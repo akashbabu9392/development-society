@@ -50,120 +50,147 @@ const Header = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-6">
-              <Link to="/" className="text-gray-700 hover:text-[#f15a24] font-medium">
+            <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8 font-medium">
+              <Link to="/" className="text-gray-800 hover:text-[#f15a24] transition-colors duration-200 font-medium">
                 HOME
               </Link>
               
               <div className="relative group">
-                <button className="flex items-center text-gray-700 hover:text-[#f15a24] font-medium">
+                <button className="flex items-center text-gray-800 hover:text-[#f15a24] transition-colors duration-200 font-medium">
                   ABOUT US <ChevronDown size={16} className="ml-1" />
                 </button>
-                <div className="absolute top-full left-0 w-64 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                  <Link to="/about" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">About the Organization</Link>
-                  <Link to="/about/vision-mission" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Vision & Mission</Link>
-                  <Link to="/executive-body" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Executive Body Members</Link>
-                  <Link to="/president-message" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Message from President</Link>
-                  <Link to="/policies" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Our Policies</Link>
-                  <Link to="/annual-reports" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Annual Reports</Link>
-                  <Link to="/audit-reports" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Audit Reports</Link>
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 bg-white shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
+                  <Link to="/about" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150">About the Organization</Link>
+                  <Link to="/about/vision-mission" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150">Vision & Mission</Link>
+                  <Link to="/executive-body" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150">Executive Body</Link>
+                  <Link to="/president-message" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150">President's Message</Link>
+                  <Link to="/policies" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150">Our Policies</Link>
+                  <Link to="/annual-reports" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150">Annual Reports</Link>
+                  <Link to="/audit-reports" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150">Audit Reports</Link>
                 </div>
               </div>
 
-              <Link to="/services" className="text-[#f15a24] hover:text-[#d14619] font-medium">
+              <Link to="/services" className="text-[#f15a24] hover:text-[#d14619] transition-colors duration-200 font-medium">
                 OUR SERVICES
               </Link>
 
               <div className="relative group">
-                <button className="flex items-center text-gray-700 hover:text-[#f15a24] font-medium">
+                <button className="flex items-center text-gray-800 hover:text-[#f15a24] transition-colors duration-200 font-medium">
                   PROGRAMMES <ChevronDown size={16} className="ml-1" />
                 </button>
-                <div className="absolute top-full left-0 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                  <Link to="/current-projects" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Current Projects</Link>
-                  <Link to="/upcoming-projects" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Upcoming Projects</Link>
-                  <Link to="/completed-projects" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Completed Projects</Link>
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-white shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
+                  <Link to="/current-projects" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150">Current Projects</Link>
+                  <Link to="/upcoming-projects" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150">Upcoming Projects</Link>
+                  <Link to="/completed-projects" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150">Completed Projects</Link>
                 </div>
               </div>
 
-              <Link to="/gallery" className="text-gray-700 hover:text-[#f15a24] font-medium">
+              <Link to="/gallery" className="text-gray-800 hover:text-[#f15a24] transition-colors duration-200 font-medium">
                 GALLERY
               </Link>
               
-              <Link to="/contact" className="text-gray-700 hover:text-[#f15a24] font-medium">
+              <Link to="/contact" className="text-gray-800 hover:text-[#f15a24] transition-colors duration-200 font-medium">
                 CONTACT
               </Link>
               
-              <Button className="bg-[#f15a24] hover:bg-[#d14619] text-white px-6 py-2 rounded">
-                DONATE NOW
+              <Button asChild className="bg-[#f15a24] hover:bg-[#d14619] text-white px-6 py-2 rounded-lg transition-colors duration-200 font-medium ml-2">
+                <Link to="/donate">DONATE NOW</Link>
               </Button>
               
-              <Search size={20} className="text-gray-600 hover:text-[#f15a24] cursor-pointer" />
             </nav>
 
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden"
+              className="lg:hidden p-2 text-gray-700 hover:text-[#f15a24] transition-colors duration-200"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
 
           {/* Mobile Navigation */}
-          {isMobileMenuOpen && (
-            <div className="lg:hidden bg-white border-t border-gray-200">
-              <div className="py-4 space-y-2">
-                <Link to="/" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">HOME</Link>
-                
-                <div>
-                  <button
-                    onClick={() => toggleDropdown('about')}
-                    className="flex items-center justify-between w-full px-4 py-2 text-gray-700 hover:bg-gray-100"
-                  >
-                    ABOUT US <ChevronDown size={16} />
-                  </button>
-                  {openDropdown === 'about' && (
-                    <div className="pl-8 space-y-1">
-                      <Link to="/about" className="block py-2 px-4 hover:bg-gray-100">About the Organization</Link>
-                      <Link to="/about/vision-mission" className="block py-2 px-4 hover:bg-gray-100">Vision & Mission</Link>
-                      <Link to="/executive-body" className="block px-4 py-2 text-gray-600 hover:bg-gray-100">Executive Body Members</Link>
-                      <Link to="/president-message" className="block px-4 py-2 text-gray-600 hover:bg-gray-100">Message from President</Link>
-                      <Link to="/policies" className="block px-4 py-2 text-gray-600 hover:bg-gray-100">Our Policies</Link>
-                      <Link to="/annual-reports" className="block px-4 py-2 text-gray-600 hover:bg-gray-100">Annual Reports</Link>
-                      <Link to="/audit-reports" className="block px-4 py-2 text-gray-600 hover:bg-gray-100">Audit Reports</Link>
-                    </div>
-                  )}
-                </div>
-
-                <Link to="/services" className="block px-4 py-2 text-[#f15a24] hover:bg-gray-100">OUR SERVICES</Link>
-                
-                <div>
-                  <button
-                    onClick={() => toggleDropdown('programmes')}
-                    className="flex items-center justify-between w-full px-4 py-2 text-gray-700 hover:bg-gray-100"
-                  >
-                    PROGRAMMES <ChevronDown size={16} />
-                  </button>
-                  {openDropdown === 'programmes' && (
-                    <div className="pl-8 space-y-1">
-                      <Link to="/current-projects" className="block px-4 py-2 text-gray-600 hover:bg-gray-100">Current Projects</Link>
-                      <Link to="/upcoming-projects" className="block px-4 py-2 text-gray-600 hover:bg-gray-100">Upcoming Projects</Link>
-                      <Link to="/completed-projects" className="block px-4 py-2 text-gray-600 hover:bg-gray-100">Completed Projects</Link>
-                    </div>
-                  )}
-                </div>
-
-                <Link to="/gallery" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">GALLERY</Link>
-                <Link to="/contact" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">CONTACT</Link>
-                
-                <div className="px-4 py-2">
-                  <Button className="w-full bg-[#f15a24] hover:bg-[#d14619] text-white">
-                    DONATE NOW
-                  </Button>
+          <div className={`lg:hidden bg-white border-t border-gray-200 overflow-hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-screen' : 'max-h-0'}`}>
+            <div className="py-4 space-y-1">
+              <Link 
+                to="/" 
+                className="block px-6 py-3 text-gray-800 hover:bg-gray-50 font-medium transition-colors duration-200"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                HOME
+              </Link>
+              
+              <div className="border-t border-gray-100">
+                <button
+                  onClick={() => toggleDropdown('about')}
+                  className="flex items-center justify-between w-full px-6 py-3 text-gray-800 hover:bg-gray-50 font-medium transition-colors duration-200 text-left"
+                >
+                  ABOUT US <ChevronDown size={16} className={`transition-transform duration-200 ${openDropdown === 'about' ? 'rotate-180' : ''}`} />
+                </button>
+                <div className={`overflow-hidden transition-all duration-300 ${openDropdown === 'about' ? 'max-h-96' : 'max-h-0'}`}>
+                  <div className="pl-8 space-y-1 bg-gray-50">
+                    <Link to="/about" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150" onClick={() => setIsMobileMenuOpen(false)}>About the Organization</Link>
+                    <Link to="/about/vision-mission" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150" onClick={() => setIsMobileMenuOpen(false)}>Vision & Mission</Link>
+                    <Link to="/executive-body" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150" onClick={() => setIsMobileMenuOpen(false)}>Executive Body</Link>
+                    <Link to="/president-message" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150" onClick={() => setIsMobileMenuOpen(false)}>President's Message</Link>
+                    <Link to="/policies" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150" onClick={() => setIsMobileMenuOpen(false)}>Our Policies</Link>
+                    <Link to="/annual-reports" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150" onClick={() => setIsMobileMenuOpen(false)}>Annual Reports</Link>
+                    <Link to="/audit-reports" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150" onClick={() => setIsMobileMenuOpen(false)}>Audit Reports</Link>
+                  </div>
                 </div>
               </div>
+
+              <Link 
+                to="/services" 
+                className="block px-6 py-3 text-[#f15a24] hover:bg-gray-50 font-medium transition-colors duration-200 border-t border-gray-100"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                OUR SERVICES
+              </Link>
+              
+              <div className="border-t border-gray-100">
+                <button
+                  onClick={() => toggleDropdown('programmes')}
+                  className="flex items-center justify-between w-full px-6 py-3 text-gray-800 hover:bg-gray-50 font-medium transition-colors duration-200 text-left"
+                >
+                  PROGRAMMES <ChevronDown size={16} className={`transition-transform duration-200 ${openDropdown === 'programmes' ? 'rotate-180' : ''}`} />
+                </button>
+                <div className={`overflow-hidden transition-all duration-300 ${openDropdown === 'programmes' ? 'max-h-96' : 'max-h-0'}`}>
+                  <div className="pl-8 space-y-1 bg-gray-50">
+                    <Link to="/current-projects" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150" onClick={() => setIsMobileMenuOpen(false)}>Current Projects</Link>
+                    <Link to="/upcoming-projects" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150" onClick={() => setIsMobileMenuOpen(false)}>Upcoming Projects</Link>
+                    <Link to="/completed-projects" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150" onClick={() => setIsMobileMenuOpen(false)}>Completed Projects</Link>
+                  </div>
+                </div>
+              </div>
+
+              <Link 
+                to="/gallery" 
+                className="block px-6 py-3 text-gray-800 hover:bg-gray-50 font-medium transition-colors duration-200 border-t border-gray-100"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                GALLERY
+              </Link>
+              
+              <Link 
+                to="/contact" 
+                className="block px-6 py-3 text-gray-800 hover:bg-gray-50 font-medium transition-colors duration-200 border-t border-gray-100"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                CONTACT
+              </Link>
+              
+              <div className="px-6 py-4 border-t border-gray-100">
+                <Button 
+                  asChild 
+                  className="w-full bg-[#f15a24] hover:bg-[#d14619] text-white font-medium py-3 text-base"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <Link to="/donate">DONATE NOW</Link>
+                </Button>
+              </div>
             </div>
-          )}
+          </div>
         </div>
       </header>
     </>

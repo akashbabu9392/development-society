@@ -1,29 +1,17 @@
-
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import Breadcrumb from '@/components/Breadcrumb';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 
 const Contact = () => {
   return (
     <Layout>
-      {/* Header Section */}
-      <section className="bg-gray-800 text-white py-16">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center">
-            <h1 className="text-3xl md:text-4xl font-bold">Contact</h1>
-            <nav className="text-sm">
-              <span className="text-gray-300">Home</span>
-              <span className="mx-2">›</span>
-              <span>Contact</span>
-            </nav>
-          </div>
-        </div>
-      </section>
+      <Breadcrumb title="Contact Us" />
 
       {/* Contact Content */}
-      <section className="py-16 bg-white">
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Information */}

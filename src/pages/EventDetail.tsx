@@ -57,9 +57,9 @@ const events: Event[] = [
       "Medical assistance provided"
     ],
     gallery: [
-      "/images/event2.jpg",
-      "/images/event2-1.jpg",
-      "/images/event2-2.jpg"
+      "/images/event2.png",
+      "/images/event2-1.png",
+      "/images/event2-2.png"
     ]
   },
   {

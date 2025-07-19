@@ -24,7 +24,11 @@ import PresidentMessage from './pages/PresidentMessage';
 import Policies from './pages/Policies';
 import AnnualReports from './pages/AnnualReports';
 import AuditReports from './pages/AuditReports';
+import CurrentProjects from './pages/CurrentProjects';
+import UpcomingProjects from './pages/UpcomingProjects';
+import CompletedProjects from './pages/CompletedProjects';
 import NotFound from './pages/NotFound';
+import Donate from './pages/Donate';
 
 const queryClient = new QueryClient();
 
@@ -55,7 +59,11 @@ const App = () => (
           <Route path="/policies" element={<Policies />} />
           <Route path="/annual-reports" element={<AnnualReports />} />
           <Route path="/audit-reports" element={<AuditReports />} />
-          {/* Handle all other routes */}
+          <Route path="/current-projects" element={<CurrentProjects />} />
+          <Route path="/upcoming-projects" element={<UpcomingProjects />} />
+          <Route path="/completed-projects" element={<CompletedProjects />} />
+          <Route path="/donate" element={<Donate />} />
+          <Route path="*" element={<NotFound />} />
           <Route path="/" element={<Navigate to="/" replace />} />
           <Route path="*" element={<Navigate to="/not-found" replace />} />
           <Route path="/not-found" element={<NotFound />} />
