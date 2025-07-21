@@ -15,31 +15,39 @@ const Header = () => {
   return (
     <>
       {/* Top Bar */}
-      <div className="bg-[#f15a24] text-white py-2 px-4">
-        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-sm">
-          <div className="flex items-center space-x-4 mb-2 md:mb-0">
-            <div className="flex items-center space-x-2">
-              <Phone size={14} />
-              <span>+91 99855 12014 | +91 863 - 2265652</span>
+      <div className="bg-[#f15a24] text-white py-2">
+        <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center text-sm">
+            <div className="flex items-center space-x-4 mb-2 md:mb-0">
+              <div className="flex items-center space-x-2">
+                <Phone size={14} className="flex-shrink-0" />
+                <a href="tel:+919985512014" className="hover:underline whitespace-nowrap">+91 99855 12014</a>
+                <span className="mx-1">|</span>
+                <a href="tel:+918632265652" className="hover:underline whitespace-nowrap">+91 863 - 2265652</a>
+              </div>
             </div>
-          </div>
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-2">
-              <Mail size={14} />
-              <span>dsociety2005@gmail.com</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Facebook size={16} />
-              <Youtube size={16} />
+            <div className="flex items-center space-x-4">
+              <a href="mailto:dsociety2005@gmail.com" className="flex items-center space-x-2 hover:underline whitespace-nowrap">
+                <Mail size={14} className="flex-shrink-0" />
+                <span>dsociety2005@gmail.com</span>
+              </a>
+              <div className="flex items-center space-x-3 ml-2">
+                <a href="https://facebook.com/yourpage" target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition-colors" aria-label="Facebook">
+                  <Facebook size={16} className="w-4 h-4" />
+                </a>
+                <a href="https://youtube.com/yourchannel" target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition-colors" aria-label="YouTube">
+                  <Youtube size={16} className="w-4 h-4" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Main Header */}
-      <header className="bg-white shadow-md">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-20">
+      <header className="bg-white shadow-md sticky top-0 z-50">
+        <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
+          <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center">
               <img 

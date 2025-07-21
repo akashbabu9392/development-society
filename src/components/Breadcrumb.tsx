@@ -19,8 +19,9 @@ const Breadcrumb = ({
   const pageTitle = title || breadcrumbs[breadcrumbs.length - 1]?.name || '';
 
   return (
-    <div className={`bg-[#0A1A2F] text-white py-4 md:py-6 font-sans ${className}`}>
-      <div className="container mx-auto px-4">
+    <div className={`relative w-full bg-[#0A1A2F] text-white py-4 md:py-6 font-sans ${className}`}>
+      <div className="absolute inset-0 bg-[#0A1A2F] w-full h-full -z-10" />
+      <div className="relative container px-4 sm:px-6 lg:px-8 mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
           {/* Page Title */}
           <div className="mb-2 md:mb-0">

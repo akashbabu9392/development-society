@@ -84,7 +84,7 @@ const ProjectCard = ({
         
         <div className="mt-auto">
           <Link
-            to={`/projects/${id}`}
+            to={`/project/${id}`}
             className="inline-flex items-center text-sm font-medium text-[#f15a24] hover:text-orange-600 transition-colors group"
           >
             View Project Details

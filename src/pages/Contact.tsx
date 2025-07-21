@@ -11,115 +11,157 @@ const Contact = () => {
       <Breadcrumb title="Contact Us" />
 
       {/* Contact Content */}
-      <section className="py-12 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <section className="py-12 md:py-16 lg:py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Get In Touch With Us</h1>
+            <div className="w-20 h-1 bg-gradient-to-r from-[#f15a24] to-orange-400 mx-auto mb-6"></div>
+            <p className="text-gray-600 text-lg">Have questions or want to know more about our initiatives? We'd love to hear from you.</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Contact Information */}
-            <div>
-              <h2 className="text-3xl font-bold text-gray-800 mb-8">Get in Touch</h2>
-              
-              <div className="space-y-6">
+            <div className="space-y-6">
+              <div className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow duration-300">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-[#f15a24] rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#f15a24] to-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
                     <Phone className="text-white" size={20} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">Phone Numbers</h3>
-                    <p className="text-gray-600">+91 99855 12014</p>
-                    <p className="text-gray-600">+91 863 - 2265652</p>
+                    <h3 className="font-semibold text-lg text-gray-800 mb-1">Phone Numbers</h3>
+                    <div className="space-y-1">
+                      <a href="tel:+919985512014" className="block text-gray-600 hover:text-[#f15a24] transition-colors">+91 99855 12014</a>
+                      <a href="tel:+918632265652" className="block text-gray-600 hover:text-[#f15a24] transition-colors">+91 863 - 2265652</a>
+                    </div>
                   </div>
                 </div>
+              </div>
 
+              <div className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow duration-300">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-[#f15a24] rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#f15a24] to-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
                     <Mail className="text-white" size={20} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">Email Address</h3>
-                    <p className="text-gray-600">dsociety2005@gmail.com</p>
+                    <h3 className="font-semibold text-lg text-gray-800 mb-1">Email Address</h3>
+                    <a href="mailto:dsociety2005@gmail.com" className="text-[#f15a24] hover:underline">
+                      dsociety2005@gmail.com
+                    </a>
                   </div>
                 </div>
+              </div>
 
+              <div className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow duration-300">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-[#f15a24] rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#f15a24] to-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
                     <MapPin className="text-white" size={20} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">Address</h3>
-                    <p className="text-gray-600">
+                    <h3 className="font-semibold text-lg text-gray-800 mb-1">Our Location</h3>
+                    <address className="not-italic text-gray-600">
                       Development Society for Poor<br />
                       Rentachintala, Andhra Pradesh<br />
                       India
-                    </p>
+                    </address>
                   </div>
                 </div>
+              </div>
 
+              <div className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow duration-300">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-[#f15a24] rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#f15a24] to-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
                     <Clock className="text-white" size={20} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">Working Hours</h3>
-                    <p className="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                    <p className="text-gray-600">Saturday: 9:00 AM - 2:00 PM</p>
-                    <p className="text-gray-600">Sunday: Closed</p>
+                    <h3 className="font-semibold text-lg text-gray-800 mb-2">Working Hours</h3>
+                    <ul className="space-y-1 text-gray-600">
+                      <li className="flex justify-between">
+                        <span>Monday - Friday</span>
+                        <span>9:00 AM - 6:00 PM</span>
+                      </li>
+                      <li className="flex justify-between">
+                        <span>Saturday</span>
+                        <span>9:00 AM - 2:00 PM</span>
+                      </li>
+                      <li className="flex justify-between text-red-500">
+                        <span>Sunday</span>
+                        <span>Closed</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Contact Form */}
-            <div>
-              <h2 className="text-3xl font-bold text-gray-800 mb-8">Send us a Message</h2>
+            <div className="bg-white rounded-xl shadow-sm p-6 lg:p-8">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">Send us a Message</h2>
               
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      First Name *
+              <form className="space-y-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="space-y-1.5">
+                    <label htmlFor="first-name" className="block text-sm font-medium text-gray-700">
+                      First Name <span className="text-red-500">*</span>
                     </label>
-                    <Input placeholder="Your first name" />
+                    <Input 
+                      id="first-name"
+                      placeholder="John"
+                      className="focus:ring-2 focus:ring-[#f15a24] focus:border-transparent"
+                    />
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Last Name *
+                  <div className="space-y-1.5">
+                    <label htmlFor="last-name" className="block text-sm font-medium text-gray-700">
+                      Last Name <span className="text-red-500">*</span>
                     </label>
-                    <Input placeholder="Your last name" />
+                    <Input 
+                      id="last-name"
+                      placeholder="Doe"
+                      className="focus:ring-2 focus:ring-[#f15a24] focus:border-transparent"
+                    />
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address *
+                <div className="space-y-1.5">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                    Email Address <span className="text-red-500">*</span>
                   </label>
-                  <Input type="email" placeholder="your.email@example.com" />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number
-                  </label>
-                  <Input placeholder="Your phone number" />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Subject *
-                  </label>
-                  <Input placeholder="Message subject" />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Message *
-                  </label>
-                  <Textarea 
-                    placeholder="Your message here..."
-                    rows={6}
+                  <Input 
+                    id="email"
+                    type="email" 
+                    placeholder="your.email@example.com" 
+                    className="focus:ring-2 focus:ring-[#f15a24] focus:border-transparent"
                   />
                 </div>
 
-                <Button className="w-full bg-[#f15a24] hover:bg-[#d14619] text-white py-3">
+                <div className="space-y-1.5">
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+                    Phone Number
+                  </label>
+                  <Input 
+                    id="phone"
+                    type="tel" 
+                    placeholder="+91 12345 67890" 
+                    className="focus:ring-2 focus:ring-[#f15a24] focus:border-transparent"
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+                    Message <span className="text-red-500">*</span>
+                  </label>
+                  <Textarea 
+                    id="message"
+                    placeholder="How can we help you?" 
+                    rows={5}
+                    className="min-h-[120px] focus:ring-2 focus:ring-[#f15a24] focus:border-transparent"
+                  />
+                </div>
+
+                <Button 
+                  type="submit" 
+                  className="w-full bg-gradient-to-r from-[#f15a24] to-orange-500 hover:from-[#e04e1a] hover:to-[#f15a24] text-white py-6 text-base font-medium rounded-lg transition-all duration-200 transform hover:-translate-y-0.5 shadow-md hover:shadow-lg"
+                >
                   Send Message
                 </Button>
               </form>

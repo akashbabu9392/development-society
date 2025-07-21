@@ -5,64 +5,10 @@ import { Search } from 'lucide-react';
 import Layout from '@/components/Layout';
 import Breadcrumb from '@/components/Breadcrumb';
 import ProjectCard from '@/components/ProjectCard';
+import { currentProjects } from '@/data/projects';
 
 const CurrentProjects = () => {
-  const projects = [
-    {
-      id: '1',
-      title: "Rural Education Initiative",
-      description: "Providing quality education to underprivileged children in rural areas through our network of community learning centers.",
-      location: "Multiple Villages, Andhra Pradesh",
-      startDate: "2023-01-01",
-      beneficiaries: "500+ children",
-      image: "/images/project-education.jpg"
-    },
-    {
-      id: '2',
-      title: "Healthcare Access Program",
-      description: "Mobile medical units providing free healthcare services and medicines to remote communities.",
-      location: "Guntur District, Andhra Pradesh",
-      startDate: "2023-03-15",
-      beneficiaries: "2000+ individuals",
-      image: "/images/project-healthcare.jpg"
-    },
-    {
-      id: '3',
-      title: "Women's Empowerment Initiative",
-      description: "Skill development and entrepreneurship training for women to achieve financial independence.",
-      location: "Guntur, Andhra Pradesh",
-      startDate: "2023-06-01",
-      beneficiaries: "150+ women",
-      image: "/images/project-women.jpg"
-    },
-    {
-      id: '4',
-      title: "Sustainable Agriculture Project",
-      description: "Training farmers in sustainable agricultural practices and providing access to better farming technologies.",
-      location: "Krishna District, Andhra Pradesh",
-      startDate: "2023-02-10",
-      beneficiaries: "300+ farmers",
-      image: "/images/project-agriculture.jpg"
-    },
-    {
-      id: '5',
-      title: "Clean Water Initiative",
-      description: "Installing water purification systems in rural schools and communities to provide access to clean drinking water.",
-      location: "Prakasam District, Andhra Pradesh",
-      startDate: "2023-04-01",
-      beneficiaries: "1000+ individuals",
-      image: "/images/project-water.jpg"
-    },
-    {
-      id: '6',
-      title: "Digital Literacy Program",
-      description: "Equipping youth and adults with essential digital skills for better employment opportunities.",
-      location: "Nellore, Andhra Pradesh",
-      startDate: "2023-05-15",
-      beneficiaries: "250+ individuals",
-      image: "/images/project-digital.jpg"
-    }
-  ];
+  const projects = currentProjects;
 
   return (
     <Layout>
@@ -120,32 +66,30 @@ const CurrentProjects = () => {
           </motion.div>
 
           {/* Projects Grid */}
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 20 }}
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.1 * index }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                className="h-full"
               >
                 <ProjectCard
                   id={project.id}
                   title={project.title}
                   description={project.description}
                   location={project.location}
-                  beneficiaries={project.beneficiaries}
                   startDate={project.startDate}
-                  status="active"
+                  endDate={project.endDate}
+                  beneficiaries={project.beneficiaries}
+                  status={project.status}
                   image={project.image}
                 />
               </motion.div>
             ))}
-          </motion.div>
+          </div>
           
           {/* Call to Action */}
           <motion.div 

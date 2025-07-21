@@ -4,83 +4,10 @@ import { Button } from '@/components/ui/button';
 import { Search, Award, Users, MapPin, Calendar, CheckCircle } from 'lucide-react';
 import Layout from '@/components/Layout';
 import Breadcrumb from '@/components/Breadcrumb';
-import ProjectCard from '@/components/ProjectCard';
+import { completedProjects } from '@/data/projects';
 
 const CompletedProjects = () => {
-  const projects = [
-    {
-      id: '1',
-      title: "Rural Education Enhancement Program",
-      description: "Established 5 learning centers providing quality education to 500+ children in remote villages of Guntur district.",
-      location: "Guntur District, Andhra Pradesh",
-      startDate: "2022-01-10",
-      endDate: "2022-12-20",
-      beneficiaries: "500+ children",
-      impact: "Improved literacy rates by 35% in target areas",
-      status: "completed",
-      image: "/images/completed-education.jpg"
-    },
-    {
-      id: '2',
-      title: "Healthcare on Wheels",
-      description: "Mobile medical units provided free healthcare services to over 2,000 individuals in underserved communities.",
-      location: "Krishna District, Andhra Pradesh",
-      startDate: "2022-03-15",
-      endDate: "2022-11-30",
-      beneficiaries: "2,000+ individuals",
-      impact: "Provided 5,000+ free medical consultations",
-      status: "completed",
-      image: "/images/completed-healthcare.jpg"
-    },
-    {
-      id: '3',
-      title: "Women's Skill Development Center",
-      description: "Trained 200+ women in tailoring, handicrafts, and entrepreneurship, enabling them to start small businesses.",
-      location: "Guntur, Andhra Pradesh",
-      startDate: "2021-11-01",
-      endDate: "2022-10-30",
-      beneficiaries: "200+ women",
-      impact: "85% of participants started income-generating activities",
-      status: "completed",
-      image: "/images/completed-women.jpg"
-    },
-    {
-      id: '4',
-      title: "Sustainable Farming Initiative",
-      description: "Trained 150 farmers in organic farming techniques and provided access to better seeds and irrigation methods.",
-      location: "Prakasam District, Andhra Pradesh",
-      startDate: "2022-02-01",
-      endDate: "2022-12-15",
-      beneficiaries: "150+ farmers",
-      impact: "Increased crop yields by 40% on average",
-      status: "completed",
-      image: "/images/completed-farming.jpg"
-    },
-    {
-      id: '5',
-      title: "Clean Water Access Project",
-      description: "Installed 10 water purification systems in rural schools and communities, providing clean drinking water.",
-      location: "Nellore District, Andhra Pradesh",
-      startDate: "2022-01-15",
-      endDate: "2022-08-30",
-      beneficiaries: "1,200+ individuals",
-      impact: "Reduced waterborne diseases by 60% in target areas",
-      status: "completed",
-      image: "/images/completed-water.jpg"
-    },
-    {
-      id: '6',
-      title: "Digital Literacy Program",
-      description: "Trained 300+ youth in basic computer skills, internet usage, and digital tools for better employment opportunities.",
-      location: "Chittoor District, Andhra Pradesh",
-      startDate: "2022-04-10",
-      endDate: "2022-12-20",
-      beneficiaries: "300+ youth",
-      impact: "65% of participants found employment or started businesses",
-      status: "completed",
-      image: "/images/completed-digital.jpg"
-    }
-  ];
+  const projects = completedProjects;
 
   return (
     <Layout>
@@ -225,7 +152,7 @@ const CompletedProjects = () => {
                       {project.description}
                     </p>
                     
-                    <div className="space-y-3 text-sm text-gray-600 mb-6">
+                    <div className="space-y-3 text-sm text-gray-600 mb-4">
                       <div className="flex items-start">
                         <MapPin className="w-4 h-4 mt-0.5 mr-2 text-[#f15a24] flex-shrink-0" />
                         <span>{project.location}</span>
@@ -239,17 +166,16 @@ const CompletedProjects = () => {
                         <span>
                           {new Date(project.startDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}
                           {' - '}
-                          {new Date(project.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}
+                          {project.endDate 
+                            ? new Date(project.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })
+                            : 'Present'}
                         </span>
-                      </div>
-                      <div className="bg-green-50 p-3 rounded-lg mt-2">
-                        <p className="text-xs font-medium text-green-700">Impact: {project.impact}</p>
                       </div>
                     </div>
                     
                     <div className="mt-auto">
                       <Link
-                        to={`/projects/${project.id}`}
+                        to={`/project/${project.id}`}
                         className="inline-flex items-center text-sm font-medium text-[#f15a24] hover:text-orange-600 transition-colors group"
                       >
                         View Project Details

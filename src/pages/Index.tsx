@@ -28,22 +28,121 @@ import {
   ArrowRight
 } from 'lucide-react';
 
-const Index = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [currentVolunteer, setCurrentVolunteer] = useState(0);
+// Define hero slides at the top level
+const heroSlides = [
+  {
+    title: "EDUCATION OF THE CHILDREN",
+    image: "/images/bg1.jpg"
+  },
+  {
+    title: "MEDICAL TREATMENT OF THE CHILDREN",
+    image: "/images/bg2.jpg"
+  }
+];
 
-  const heroSlides = [
-    {
-      title: "EDUCATION OF THE CHILDREN",
-      subtitle: "Development Society for Poor",
-      image: "/images/bg1.jpg"
-    },
-    {
-      title: "MEDICAL TREATMENT OF THE CHILDREN",
-      subtitle: "Development Society for Poor",
-      image: "/images/bg2.jpg"
-    }
-  ];
+// Section component for consistent section styling
+const Section = ({ 
+  children, 
+  className = '', 
+  fullWidth = false,
+  ...props 
+}: { 
+  children: React.ReactNode;
+  fullWidth?: boolean;
+} & React.HTMLAttributes<HTMLElement>) => (
+  <section 
+    className={`${fullWidth ? 'w-full' : 'container px-4 sm:px-6 lg:px-8 mx-auto'} ${className}`} 
+    {...props}
+  >
+    <div className={`${!fullWidth ? 'max-w-7xl mx-auto' : 'w-full'}`}>
+      {children}
+    </div>
+  </section>
+);
+
+// Container component for consistent content width
+const ContentContainer = ({ 
+  children, 
+  className = '', 
+  narrow = false,
+  ...props 
+}: { 
+  children: React.ReactNode;
+  narrow?: boolean;
+} & React.HTMLAttributes<HTMLDivElement>) => (
+  <div 
+    className={`${narrow ? 'max-w-4xl' : 'max-w-6xl'} mx-auto w-full px-4 sm:px-6 lg:px-8 ${className}`} 
+    {...props}
+  >
+    {children}
+  </div>
+);
+
+// Hero Section Component with navigation arrows and orange text
+const HeroSection = ({ slides }: { slides: typeof heroSlides }) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  return (
+    <section className="relative w-full h-[70vh] min-h-[500px] max-h-[800px] overflow-hidden">
+      {/* Background Slides */}
+      <div className="absolute inset-0 w-full h-full">
+        <img
+          src={slides[currentSlide].image}
+          alt={slides[currentSlide].title}
+          className="w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-black/40" />
+      </div>
+      
+      {/* Simple White Navigation Arrows */}
+      <button 
+        onClick={prevSlide}
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 text-white/90 hover:text-white transition-colors duration-200"
+        aria-label="Previous slide"
+      >
+        <ChevronLeft size={36} strokeWidth={1.5} />
+      </button>
+      
+      <button 
+        onClick={nextSlide}
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 text-white/90 hover:text-white transition-colors duration-200"
+        aria-label="Next slide"
+      >
+        <ChevronRight size={36} strokeWidth={1.5} />
+      </button>
+      
+      {/* Content */}
+      <div className="relative h-full flex items-center">
+        <ContentContainer className="text-center">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#f15a24] drop-shadow-lg">
+            {slides[currentSlide].title}
+          </h1>
+        </ContentContainer>
+      </div>
+      
+
+    </section>
+  );
+};
+
+const Index = () => {
+  const [currentVolunteer, setCurrentVolunteer] = useState(0);
 
   const volunteers = [
     { 
@@ -144,13 +243,6 @@ const Index = () => {
     }
   ];
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
-
   const nextVolunteer = () => {
     setCurrentVolunteer((prev) => (prev + 1) % volunteers.length);
   };
@@ -160,39 +252,9 @@ const Index = () => {
   };
 
   return (
-    <Layout>
+    <Layout fullWidth>
       {/* Hero Section */}
-      <section className="relative h-[70vh] md:h-[80vh] overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-gray-800 transition-all duration-1000 ease-in-out"
-          style={{ backgroundImage: `url(${heroSlides[currentSlide].image})` }}
-        >
-          <div className="absolute inset-0 bg-black/50"></div>
-        </div>
-        
-        {/* Navigation Arrows */}
-        <button 
-          onClick={() => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 text-white/80 hover:text-white p-3 transition-all duration-300"
-          aria-label="Previous slide"
-        >
-          <ChevronLeft size={28} />
-        </button>
-        <button 
-          onClick={() => setCurrentSlide((prev) => (prev + 1) % heroSlides.length)}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 text-white/80 hover:text-white p-3 transition-all duration-300"
-          aria-label="Next slide"
-        >
-          <ChevronRight size={28} />
-        </button>
-        
-        <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
-          <div className="max-w-4xl mx-auto transform transition-all duration-700 ease-in-out">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 animate-fadeIn text-[#f15a24]">{heroSlides[currentSlide].title}</h1>
-            <p className="text-xl md:text-2xl mb-8 animate-fadeIn text-white">{heroSlides[currentSlide].subtitle}</p>
-          </div>
-        </div>
-      </section>
+      <HeroSection slides={heroSlides} />
 
       {/* Our Services Section */}
       <section className="py-16 bg-gray-50">

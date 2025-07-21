@@ -5,70 +5,10 @@ import { Search, Calendar, Clock } from 'lucide-react';
 import Layout from '@/components/Layout';
 import Breadcrumb from '@/components/Breadcrumb';
 import ProjectCard from '@/components/ProjectCard';
+import { upcomingProjects } from '@/data/projects';
 
 const UpcomingProjects = () => {
-  const projects = [
-    {
-      id: '1',
-      title: "Digital Literacy Program",
-      description: "Empowering rural youth with essential digital skills and computer literacy to enhance their employability.",
-      location: "Guntur District, Andhra Pradesh",
-      startDate: "2023-09-15",
-      beneficiaries: "300+ youth",
-      status: "upcoming",
-      image: "/images/upcoming-digital.jpg"
-    },
-    {
-      id: '2',
-      title: "Clean Water Initiative",
-      description: "Installing water purification systems in remote villages to provide access to clean drinking water.",
-      location: "Krishna District, Andhra Pradesh",
-      startDate: "2023-11-01",
-      beneficiaries: "1000+ villagers",
-      status: "upcoming",
-      image: "/images/upcoming-water.jpg"
-    },
-    {
-      id: '3',
-      title: "Elderly Care Center",
-      description: "Establishing a dedicated care center for the elderly with medical facilities and recreational activities.",
-      location: "Guntur, Andhra Pradesh",
-      startDate: "2024-01-15",
-      beneficiaries: "50+ elderly",
-      status: "upcoming",
-      image: "/images/upcoming-elderly.jpg"
-    },
-    {
-      id: '4',
-      title: "Vocational Training Center",
-      description: "Setting up a center to provide vocational training in various trades for underprivileged youth.",
-      location: "Prakasam District, Andhra Pradesh",
-      startDate: "2024-03-01",
-      beneficiaries: "200+ youth annually",
-      status: "upcoming",
-      image: "/images/upcoming-vocational.jpg"
-    },
-    {
-      id: '5',
-      title: "Community Health Camp",
-      description: "Organizing free health check-up camps in remote villages with specialist doctors and free medicines.",
-      location: "Nellore District, Andhra Pradesh",
-      startDate: "2023-10-10",
-      beneficiaries: "500+ villagers",
-      status: "upcoming",
-      image: "/images/upcoming-healthcamp.jpg"
-    },
-    {
-      id: '6',
-      title: "Solar Power for Schools",
-      description: "Providing solar power solutions to rural schools to ensure uninterrupted electricity for education.",
-      location: "Chittoor District, Andhra Pradesh",
-      startDate: "2024-02-01",
-      beneficiaries: "10+ schools, 2000+ students",
-      status: "upcoming",
-      image: "/images/upcoming-solar.jpg"
-    }
-  ];
+  const projects = upcomingProjects;
 
   return (
     <Layout>
@@ -146,6 +86,7 @@ const UpcomingProjects = () => {
                   location={project.location}
                   beneficiaries={project.beneficiaries}
                   startDate={project.startDate}
+                  endDate={project.endDate}
                   status="upcoming"
                   image={project.image}
                 />

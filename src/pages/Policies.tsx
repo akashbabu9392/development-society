@@ -82,24 +82,7 @@ const Policies = () => {
             ))}
           </div>
 
-          {/* Contact Information */}
-          <div className="mt-16 bg-gradient-to-r from-[#4e73df] to-[#1cc88a] rounded-lg shadow-lg p-8 text-white">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl font-bold mb-4">Have Questions?</h2>
-              <div className="w-16 h-1 bg-white/50 rounded-full mx-auto mb-6"></div>
-              <p className="text-lg mb-8 max-w-3xl mx-auto opacity-90">
-                If you have any questions about our policies or need further clarification, please don't hesitate to contact us. We're here to help!
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild className="bg-white text-[#4e73df] hover:bg-gray-100">
-                  <Link to="/contact">Contact Us</Link>
-                </Button>
-                <Button asChild variant="outline" className="border-white text-white hover:bg-white/10">
-                  <Link to="/about">Learn More About Us</Link>
-                </Button>
-              </div>
-            </div>
-          </div>
+
         </div>
       </section>
     </Layout>
