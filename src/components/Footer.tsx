@@ -6,12 +6,19 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="bg-[#f15a24] text-white">
+    <footer className="bg-gray-800 text-white">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* About Section */}
           <div className="lg:col-span-2">
-            <h3 className="text-xl font-bold mb-4">About Development Society for Poor</h3>
+            <div className="flex items-center mb-4">
+              <img 
+                src="/favicon/icon1.png" 
+                alt="Development Society for Poor Logo" 
+                className="h-12 w-auto mr-3"
+              />
+              <h3 className="text-xl font-bold">Development Society for Poor</h3>
+            </div>
             <p className="text-white/90 mb-4 leading-relaxed">
               Development Society for Poor is a growing grass-roots organization working towards Sustainable 
               Livelihood, Quality Education, Health, Climate Change and Disaster Management among Tribal, Dalits, 

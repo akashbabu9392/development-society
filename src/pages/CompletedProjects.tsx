@@ -13,73 +13,14 @@ const CompletedProjects = () => {
     <Layout>
       <Breadcrumb title="Completed Projects" />
       
-      <section className="py-12 bg-gray-50">
+      {/* Search and Filter Section */}
+      <section className="py-8 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <motion.h1 
-              className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              Our Completed Projects
-            </motion.h1>
-            <motion.p 
-              className="text-lg text-gray-600"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              Explore the successful initiatives we've completed, creating lasting impact in communities across the region.
-            </motion.p>
-          </div>
-          
-          {/* Stats */}
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <div className="bg-white p-6 rounded-xl shadow-sm text-center">
-              <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="h-8 w-8 text-green-600" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-1">25+</h3>
-              <p className="text-gray-600">Projects Completed</p>
-            </div>
-            
-            <div className="bg-white p-6 rounded-xl shadow-sm text-center">
-              <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="h-8 w-8 text-blue-600" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-1">10,000+</h3>
-              <p className="text-gray-600">Lives Impacted</p>
-            </div>
-            
-            <div className="bg-white p-6 rounded-xl shadow-sm text-center">
-              <div className="w-16 h-16 bg-purple-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MapPin className="h-8 w-8 text-purple-600" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-1">15+</h3>
-              <p className="text-gray-600">Districts Covered</p>
-            </div>
-            
-            <div className="bg-white p-6 rounded-xl shadow-sm text-center">
-              <div className="w-16 h-16 bg-orange-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Calendar className="h-8 w-8 text-orange-600" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-1">5+</h3>
-              <p className="text-gray-600">Years of Service</p>
-            </div>
-          </motion.div>
-          
-          {/* Search and Filter */}
           <motion.div 
             className="mb-8 flex flex-col md:flex-row gap-4 justify-between items-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
             <div className="relative w-full md:max-w-md">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -189,15 +130,82 @@ const CompletedProjects = () => {
               </motion.div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Our Completed Projects with Stats */}
+      <section className="py-12 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <motion.h1 
+              className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              Our Completed Projects
+            </motion.h1>
+            <motion.p 
+              className="text-lg text-gray-600"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              Explore the successful initiatives we've completed, creating lasting impact in communities across the region.
+            </motion.p>
+          </div>
           
-          {/* Call to Action */}
+          {/* Stats */}
           <motion.div 
-            className="mt-16 text-center"
+            className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Support Our Future Projects</h2>
+            <div className="bg-white p-6 rounded-xl shadow-sm text-center">
+              <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Award className="h-8 w-8 text-green-600" />
+              </div>
+              <h3 className="text-3xl font-bold text-gray-900 mb-1">25+</h3>
+              <p className="text-gray-600">Projects Completed</p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-xl shadow-sm text-center">
+              <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="h-8 w-8 text-blue-600" />
+              </div>
+              <h3 className="text-3xl font-bold text-gray-900 mb-1">10,000+</h3>
+              <p className="text-gray-600">Lives Impacted</p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-xl shadow-sm text-center">
+              <div className="w-16 h-16 bg-purple-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                <MapPin className="h-8 w-8 text-purple-600" />
+              </div>
+              <h3 className="text-3xl font-bold text-gray-900 mb-1">15+</h3>
+              <p className="text-gray-600">Districts Covered</p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-xl shadow-sm text-center">
+              <div className="w-16 h-16 bg-orange-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Calendar className="h-8 w-8 text-orange-600" />
+              </div>
+              <h3 className="text-3xl font-bold text-gray-900 mb-1">5+</h3>
+              <p className="text-gray-600">Years of Service</p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+      
+      {/* Support Our Future Projects */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 text-center">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Support Our Future Projects</h2>
             <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
               Your contribution can help us continue our mission and create more success stories like these.
             </p>

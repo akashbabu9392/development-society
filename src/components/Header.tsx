@@ -12,30 +12,41 @@ const Header = () => {
     setOpenDropdown(openDropdown === dropdown ? null : dropdown);
   };
 
+  // State to manage mobile menu open/close
+  const [isContactOpen, setIsContactOpen] = useState(false);
+
   return (
     <>
-      {/* Top Bar */}
-      <div className="bg-[#f15a24] text-white py-2">
-        <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
+      {/* Top Contact Bar - Hidden on mobile, shown on md and above */}
+      <div className="hidden md:block bg-orange-600 text-white py-2">
+        <div className="container px-4 mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm">
-            <div className="flex items-center space-x-4 mb-2 md:mb-0">
-              <div className="flex items-center space-x-2">
+            {/* Phone Numbers */}
+            <div className="flex items-center gap-2">
+              <a href="tel:+919985512014" className="hover:underline flex items-center gap-1">
                 <Phone size={14} className="flex-shrink-0" />
-                <a href="tel:+919985512014" className="hover:underline whitespace-nowrap">+91 99855 12014</a>
-                <span className="mx-1">|</span>
-                <a href="tel:+918632265652" className="hover:underline whitespace-nowrap">+91 863 - 2265652</a>
-              </div>
+                <span>+91 99855 12014</span>
+              </a>
+              <span>|</span>
+              <a href="tel:+918632265652" className="hover:underline">+91 863 - 2265652</a>
             </div>
-            <div className="flex items-center space-x-4">
-              <a href="mailto:dsociety2005@gmail.com" className="flex items-center space-x-2 hover:underline whitespace-nowrap">
+            
+            {/* Email and Social */}
+            <div className="flex items-center gap-4">
+              <a href="mailto:dsociety2005@gmail.com" className="flex items-center gap-1 hover:underline">
                 <Mail size={14} className="flex-shrink-0" />
                 <span>dsociety2005@gmail.com</span>
               </a>
-              <div className="flex items-center space-x-3 ml-2">
-                <a href="https://facebook.com/yourpage" target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition-colors" aria-label="Facebook">
+              
+              <div className="flex items-center gap-3 border-l border-white/20 pl-4">
+                <a href="https://facebook.com/yourpage" target="_blank" rel="noopener noreferrer" 
+                   className="hover:text-white/80 transition-colors flex items-center gap-1" 
+                   aria-label="Facebook">
                   <Facebook size={16} className="w-4 h-4" />
                 </a>
-                <a href="https://youtube.com/yourchannel" target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition-colors" aria-label="YouTube">
+                <a href="https://youtube.com/yourchannel" target="_blank" rel="noopener noreferrer" 
+                   className="hover:text-white/80 transition-colors flex items-center gap-1" 
+                   aria-label="YouTube">
                   <Youtube size={16} className="w-4 h-4" />
                 </a>
               </div>
@@ -119,6 +130,36 @@ const Header = () => {
 
           {/* Mobile Navigation */}
           <div className={`lg:hidden bg-white border-t border-gray-200 overflow-hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-screen' : 'max-h-0'}`}>
+            {/* Mobile Contact Info - Only shown in mobile menu */}
+            <div className="bg-orange-600 text-white p-4">
+              <div className="space-y-3 text-sm">
+                <div className="flex items-center gap-2">
+                  <a href="tel:+919985512014" className="hover:underline flex items-center gap-1">
+                    <Phone size={16} />
+                    <span>+91 99855 12014</span>
+                  </a>
+                  <span>|</span>
+                  <a href="tel:+918632265652" className="hover:underline">+91 863 - 2265652</a>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Mail size={16} />
+                  <a href="mailto:dsociety2005@gmail.com" className="hover:underline">dsociety2005@gmail.com</a>
+                </div>
+                <div className="flex items-center gap-4 pt-2">
+                  <a href="https://facebook.com/yourpage" target="_blank" rel="noopener noreferrer" 
+                     className="hover:text-white/80 transition-colors" 
+                     aria-label="Facebook">
+                    <Facebook size={20} />
+                  </a>
+                  <a href="https://youtube.com/yourchannel" target="_blank" rel="noopener noreferrer" 
+                     className="hover:text-white/80 transition-colors" 
+                     aria-label="YouTube">
+                    <Youtube size={20} />
+                  </a>
+                </div>
+              </div>
+            </div>
+            
             <div className="py-4 space-y-1">
               <Link 
                 to="/" 
